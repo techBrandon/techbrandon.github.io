@@ -4,15 +4,19 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# 👋 Hello, I'm techBrandon!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+Welcome to my blog. I'm a cybersecurity professional who specializes in identity security. I spend most of my time performing security assessments for organizations of all shapes and sizes. Solving unique and complex problems is my passion. I love learning new things and want to share what I know.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+This blog is where I write original content and share things I've done both personally and professionally. Whether it's lengthy technical deep-dives, quick tips, or random thoughts, I try to keep things honest, helpful, and fun.
 
+## 🧰 Skills & Tools
+- Active Directory
+- Entra ID
+- PowerShell
+- Currently exploring: Markdown & Jekyll (obviously!)
 
-[jekyll-organization]: https://github.com/jekyll
+## 📬 Let's Connect!
+Want to say hi or collaborate? You can reach me at pretty much any social @techBrandon, or check out more of my project's on [GitHub](https://github.com/techBrandon).
+
+Thanks for stopping by. Glad you're here.
