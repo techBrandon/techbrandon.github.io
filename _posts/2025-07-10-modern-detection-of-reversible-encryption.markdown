@@ -53,7 +53,7 @@ Unlike the other settings, disabling reversible encryption in an FGPP does not s
 If **any** of the following apply, passwords **will be** stored using reversible encryption:
 
 1. The setting is enabled on the user object (`Store password using reversible encryption`).
-2. A *GPP applied to a user or group of users enables it.
+2. A FGPP applied to a user or group of users enables it.
 3. The DDPP enables it on every AD user regardless of FGPP or user configuration.
 
 | DDPP | FGPP | User Setting | Result |
