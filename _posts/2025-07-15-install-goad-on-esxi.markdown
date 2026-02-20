@@ -189,6 +189,28 @@ Errors may occur that require manual intervention. I will update as I find any c
 
 ![GOAD Errors](/assets/images/goad_error.png)
 
+### Reinstall Lab
+
+If you're anything like me, you will have screwed up your environment eventually. I mean, that's kind of encouraged right?
+
+Maybe you just ran out of rearms and forgot everything you knew about setting this up. (Also like me)
+
+First, I ran `status` and found I was unable to connect to ESXi. This was just because I kept the ssh service disabled like a good boy.
+
+Next, I ran `delete` which will destroy the environment. For our primary purpose we just want the old VMs gone but this will also destroy the lab instance so if you have multiple instances, you'll want to ensure you have the right one selected. This actually runs pretty quickly.
+
+Doing `install` should have just worked. HA, ya right.
+
+![GOAD OVF Error](/assets/images/goad_ovferror.png)
+
+You've got to put the ovf tools in your path because you didn't do it permanently and didn't care to look up how. Did you do it this time? Nope.
+
+```bash
+export PATH="$PATH:/home/kali/Downloads/ovftool"
+```
+
+Connected back to GOAD with `./goad.sh -p vmware_esxi` and ran `install` again. We're on our way.
+
 ---
 
 ## 🔗 References
