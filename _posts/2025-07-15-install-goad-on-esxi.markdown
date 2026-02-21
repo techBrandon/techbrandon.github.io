@@ -211,6 +211,33 @@ export PATH="$PATH:/home/kali/Downloads/ovftool"
 
 Connected back to GOAD with `./goad.sh -p vmware_esxi` and ran `install` again. We're on our way.
 
+Post install, there are a few errors about configuring secondary network adapters but I found that some looked fine. Here are the changes I had to make:
+ - Install vmtools on DC02
+ - Fix Ethernet Adapter #1 on DC02. It was set to automatic instead of manually specifying 192.168.56.11
+ 
+ The VMs were now built but they were all in workgroups so the ansible playbooks did not provision the domains at all. I found this error to be cause:
+
+ ![GOAD Unreachable Error](/assets/images/goad_unreachable.png)
+
+I found a solution in the **ansible persistent "unreachable error"** section of: https://orange-cyberdefense.github.io/GOAD/troobleshoot/
+
+It took me a while to figure out where I needed to edit the file. I tried a `Vagrantfile` and that wasn't right. I finally found which inventory file is being used by looking at which commands were being run by the ansible playbook:
+
+![GOAD Inventory](/assets/images/goad_inventory.png)
+
+I found the section that was referenced in the GOAD troubleshooting document in the `/home/kali/GOAD/ad/GOAD/data/inventory` file.
+
+Uncomment out this section:
+
+```bash
+# ansible_winrm_transport=basic
+# ansible_port=5985
+```
+
+Relauched `install` and came back the next day to find success!
+
+![GOAD completed](/assets/images/goad_completed.png)
+
 ---
 
 ## 🔗 References
