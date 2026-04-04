@@ -1,0 +1,24 @@
+// Role-specific accent overrides
+// These are applied via --role-color CSS custom property from front matter defaults
+
+.content-page,
+.hub-page {
+  .breadcrumb-role {
+    color: var(--role-color);
+  }
+
+  .card:hover {
+    border-color: var(--role-color);
+  }
+
+  .card-cta {
+    color: var(--role-color);
+  }
+
+  .dig-deeper-title {
+    &::before {
+      content: "> ";
+      color: var(--role-color);
+    }
+  }
+}

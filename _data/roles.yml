@@ -1,0 +1,23 @@
+- name: IT Admin
+  slug: it-admin
+  color: "#58a6ff"
+  icon: terminal
+  description: "Configure Entra, deploy passkeys, manage policies"
+
+- name: End User
+  slug: end-user
+  color: "#3fb950"
+  icon: user
+  description: "What passkeys are, how to set them up, what to expect"
+
+- name: Security Lead
+  slug: security
+  color: "#d29922"
+  icon: shield
+  description: "Risk assessment, compliance, phishing-resistant strategy"
+
+- name: Helpdesk
+  slug: helpdesk
+  color: "#f85149"
+  icon: headset
+  description: "Device recovery, TAP issuance, troubleshooting"

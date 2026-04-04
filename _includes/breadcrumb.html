@@ -1,0 +1,15 @@
+{% if page.role_hub %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ site.baseurl }}/" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-sep">&gt;</span>
+  {% if page.role_hub != "/" %}
+  <a href="{{ site.baseurl }}{{ page.role_hub }}" class="breadcrumb-link breadcrumb-role">{{ page.role }}</a>
+  {% if page.role_hub != page.url %}
+  <span class="breadcrumb-sep">&gt;</span>
+  <span class="breadcrumb-current">{{ page.title }}</span>
+  {% endif %}
+  {% else %}
+  <span class="breadcrumb-current">{{ page.title }}</span>
+  {% endif %}
+</nav>
+{% endif %}

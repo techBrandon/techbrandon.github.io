@@ -1,0 +1,31 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ site.baseurl }}/" class="site-logo">
+      <span class="logo-icon">&gt;_</span>
+      <span class="logo-text">{{ site.title }}</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="site-nav" role="navigation">
+      {% for link in site.data.navigation %}
+      <a href="{{ site.baseurl }}{{ link.url }}"
+         class="nav-link{% if page.url == link.url %} nav-link--active{% endif %}"
+         {% if link.color %}style="--nav-color: {{ link.color }}"{% endif %}>
+        {{ link.title }}
+      </a>
+      {% endfor %}
+      {% if page.url contains '/passkey-path/' %}
+      <a href="{{ site.baseurl }}/passkey-path/progress/"
+         class="nav-link{% if page.url == '/passkey-path/progress/' %} nav-link--active{% endif %}"
+         style="--nav-color: #d29922">
+        Your Progress
+      </a>
+      {% endif %}
+    </nav>
+  </div>
+</header>

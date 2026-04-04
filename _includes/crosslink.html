@@ -1,0 +1,17 @@
+{% if page.crosslinks %}
+<section class="crosslinks">
+  <h2 class="crosslinks-title">Related content from other paths</h2>
+  <div class="crosslink-list">
+    {% for item in page.crosslinks %}
+    <a href="{{ site.baseurl }}{{ item.url }}" class="crosslink-item" data-href="{{ item.url }}">
+      <span class="crosslink-badge" data-role="{{ item.role }}">{{ item.role }}</span>
+      <div class="crosslink-body">
+        <span class="crosslink-name">{{ item.title }}</span>
+        <span class="crosslink-desc">{{ item.description }}</span>
+      </div>
+      <span class="crosslink-arrow">&rarr;</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

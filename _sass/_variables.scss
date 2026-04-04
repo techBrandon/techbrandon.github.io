@@ -1,0 +1,40 @@
+// Colors - GitHub Dark aesthetic
+$bg-primary: #0d1117;
+$bg-surface: #161b22;
+$bg-surface-raised: #1c2128;
+$bg-hover: #1f2937;
+
+$border-default: #30363d;
+$border-subtle: #21262d;
+
+$text-primary: #c9d1d9;
+$text-secondary: #8b949e;
+$text-heading: #e6edf3;
+$text-link: #58a6ff;
+
+// Role accent colors
+$role-it-admin: #58a6ff;
+$role-end-user: #3fb950;
+$role-security: #d29922;
+$role-helpdesk: #f85149;
+$role-shared: #8b949e;
+
+// Fonts
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// Spacing
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+$space-3xl: 4rem;
+
+// Layout
+$container-max: 960px;
+$container-wide: 1200px;
+$header-height: 60px;
+$border-radius: 6px;
+$border-radius-lg: 8px;

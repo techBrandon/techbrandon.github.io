@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<div class="home">
+  <div class="home-hero">
+    <h1>{{ page.title }}</h1>
+    <p class="home-subtitle">{{ page.description }}</p>
+  </div>
+
+  <div class="role-picker">
+    <h2 class="role-picker-prompt">Who are you?</h2>
+    <p class="role-picker-hint">Choose your path. You can always explore other tracks along the way.</p>
+
+    <div class="role-grid">
+      {% for role in site.data.roles %}
+      <a href="{{ site.baseurl }}/passkey-path/{{ role.slug }}/" class="role-card" style="--role-color: {{ role.color }}">
+        <div class="role-card-icon">
+          {% if role.icon == "terminal" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          {% elsif role.icon == "user" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          {% elsif role.icon == "shield" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          {% elsif role.icon == "headset" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+          {% endif %}
+        </div>
+        <h3 class="role-card-title">{{ role.name }}</h3>
+        <p class="role-card-desc">{{ role.description }}</p>
+        <span class="role-card-cta">Start this path &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {{ content }}
+</div>

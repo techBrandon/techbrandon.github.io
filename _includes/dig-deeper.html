@@ -1,0 +1,15 @@
+{% if page.next_pages %}
+<section class="dig-deeper">
+  <h2 class="dig-deeper-title">Dig deeper</h2>
+  <p class="dig-deeper-hint">Where to go next</p>
+  <div class="card-grid">
+    {% for item in page.next_pages %}
+    <a href="{{ site.baseurl }}{{ item.url }}" class="card" data-href="{{ item.url }}">
+      <h3 class="card-title">{{ item.title }}</h3>
+      <p class="card-desc">{{ item.description }}</p>
+      <span class="card-cta">Read &rarr;</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,852 @@
+// Card grid
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-md;
+  margin-top: $space-md;
+}
+
+// Card
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $border-radius-lg;
+  padding: $space-lg;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: var(--role-color, $text-link);
+    transform: translateY(-2px);
+  }
+
+  &--foundation {
+    border-style: dashed;
+    border-color: $border-subtle;
+
+    &:hover {
+      border-style: solid;
+    }
+  }
+}
+
+.card-title {
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text-heading;
+  margin-bottom: $space-sm;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  flex: 1;
+  margin-bottom: $space-sm;
+}
+
+.card-cta {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: var(--role-color, $text-link);
+}
+
+// Breadcrumb
+.breadcrumb {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+  margin-bottom: $space-xl;
+  padding-bottom: $space-md;
+  border-bottom: 1px solid $border-subtle;
+}
+
+.breadcrumb-link {
+  color: $text-secondary;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.breadcrumb-role {
+  color: var(--role-color, $text-secondary);
+}
+
+.breadcrumb-sep {
+  margin: 0 $space-sm;
+  color: $border-default;
+}
+
+.breadcrumb-current {
+  color: $text-primary;
+}
+
+// Dig Deeper section
+.dig-deeper {
+  margin-top: $space-3xl;
+  padding-top: $space-xl;
+  border-top: 1px solid $border-default;
+}
+
+.dig-deeper-title {
+  font-family: $font-mono;
+  font-size: 1.25rem;
+  color: $text-heading;
+  margin-bottom: $space-xs;
+}
+
+.dig-deeper-hint {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  margin-bottom: $space-md;
+}
+
+// Cross-links section
+.crosslinks {
+  margin-top: $space-2xl;
+  padding-top: $space-xl;
+  border-top: 1px solid $border-subtle;
+}
+
+.crosslinks-title {
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text-secondary;
+  margin-bottom: $space-md;
+}
+
+.crosslink-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.crosslink-item {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  padding: $space-md;
+  background: $bg-surface;
+  border: 1px solid $border-subtle;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: $border-default;
+  }
+}
+
+.crosslink-badge {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: $space-xs $space-sm;
+  border-radius: $border-radius;
+  background: $bg-surface-raised;
+  white-space: nowrap;
+
+  &[data-role="IT Admin"] { color: $role-it-admin; border: 1px solid rgba($role-it-admin, 0.3); }
+  &[data-role="End User"] { color: $role-end-user; border: 1px solid rgba($role-end-user, 0.3); }
+  &[data-role="Security Lead"] { color: $role-security; border: 1px solid rgba($role-security, 0.3); }
+  &[data-role="Helpdesk"] { color: $role-helpdesk; border: 1px solid rgba($role-helpdesk, 0.3); }
+}
+
+.crosslink-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.crosslink-name {
+  font-size: 0.9rem;
+  color: $text-heading;
+  font-weight: 500;
+}
+
+.crosslink-desc {
+  font-size: 0.8rem;
+  color: $text-secondary;
+}
+
+.crosslink-arrow {
+  font-family: $font-mono;
+  color: $text-secondary;
+  font-size: 1.1rem;
+}
+
+// Placeholder image
+.placeholder-image {
+  margin: $space-lg 0;
+  border: 1px dashed $border-default;
+  border-radius: $border-radius-lg;
+  background: $bg-surface;
+}
+
+.placeholder-image-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $space-xl;
+  text-align: center;
+}
+
+.placeholder-image-icon {
+  width: 40px;
+  height: 40px;
+  color: $text-secondary;
+  margin-bottom: $space-md;
+}
+
+.placeholder-image-desc {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  font-style: italic;
+  max-width: 500px;
+  margin-bottom: $space-sm;
+}
+
+.placeholder-image-link {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-link;
+}
+
+// Home page
+.home-hero {
+  text-align: center;
+  padding: $space-3xl 0 $space-2xl;
+}
+
+.home-subtitle {
+  font-size: 1.15rem;
+  color: $text-secondary;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.role-picker {
+  max-width: $container-wide;
+  margin: 0 auto;
+}
+
+.role-picker-prompt {
+  text-align: center;
+  font-family: $font-mono;
+  font-size: 1.5rem;
+  color: $text-heading;
+  margin-bottom: $space-xs;
+}
+
+.role-picker-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: $text-secondary;
+  margin-bottom: $space-xl;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-lg;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.role-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $border-radius-lg;
+  padding: $space-2xl $space-lg;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: var(--role-color);
+    transform: translateY(-3px);
+  }
+}
+
+.role-card-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--role-color);
+  margin-bottom: $space-md;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.role-card-title {
+  font-family: $font-mono;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: $text-heading;
+  margin-bottom: $space-sm;
+}
+
+.role-card-desc {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  flex: 1;
+  margin-bottom: $space-md;
+}
+
+.role-card-cta {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: var(--role-color);
+}
+
+// Blog home
+.blog-home {
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.blog-hero {
+  text-align: center;
+  padding: $space-2xl 0;
+  margin-bottom: $space-xl;
+  border-bottom: 1px solid $border-default;
+}
+
+.blog-subtitle {
+  font-size: 1.1rem;
+  color: $text-secondary;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Post list (homepage)
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.post-card {
+  display: block;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $border-radius-lg;
+  padding: $space-lg;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: $text-link;
+    transform: translateY(-2px);
+  }
+}
+
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-sm;
+}
+
+.post-card-date {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+}
+
+.post-card-category {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $text-link;
+  padding: 2px $space-sm;
+  background: rgba($text-link, 0.1);
+  border-radius: $border-radius;
+}
+
+.post-card-title {
+  font-family: $font-mono;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $text-heading;
+  margin-bottom: $space-sm;
+}
+
+.post-card-desc {
+  font-size: 0.9rem;
+  color: $text-secondary;
+  margin-bottom: $space-sm;
+}
+
+.post-card-cta {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-link;
+}
+
+// Blog post (single)
+.blog-post {
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.post-header {
+  margin-bottom: $space-2xl;
+  padding-bottom: $space-xl;
+  border-bottom: 1px solid $border-default;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $text-secondary;
+  margin-bottom: $space-md;
+}
+
+.post-meta-sep {
+  color: $border-default;
+}
+
+.post-category {
+  color: $text-link;
+}
+
+.post-content {
+  margin-bottom: $space-3xl;
+
+  h2 {
+    border-bottom: 1px solid $border-subtle;
+    padding-bottom: $space-sm;
+  }
+}
+
+.post-footer {
+  padding-top: $space-xl;
+  border-top: 1px solid $border-default;
+}
+
+.post-back {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $text-secondary;
+
+  &:hover {
+    color: $text-link;
+  }
+}
+
+// Hub page
+.hub-header {
+  margin-bottom: $space-2xl;
+}
+
+.hub-subtitle {
+  font-size: 1.1rem;
+  color: $text-secondary;
+}
+
+.hub-content {
+  margin-bottom: $space-xl;
+}
+
+.hub-section {
+  margin-bottom: $space-2xl;
+}
+
+// Page header
+.page-header {
+  margin-bottom: $space-xl;
+}
+
+.page-content {
+  h2 {
+    border-bottom: 1px solid $border-subtle;
+    padding-bottom: $space-sm;
+  }
+}
+
+// ---------------------------------------------------------------
+// Achievement system
+// ---------------------------------------------------------------
+
+// Visited card state
+.card.is-read {
+  position: relative;
+  border-color: $border-subtle;
+
+  &::after {
+    content: '\2713';
+    position: absolute;
+    top: $space-sm;
+    right: $space-sm;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--role-color, $text-secondary);
+    opacity: 0.7;
+  }
+
+  .card-title {
+    color: $text-secondary;
+  }
+}
+
+.crosslink-item.is-read {
+  opacity: 0.7;
+}
+
+// Track progress bar (hub pages)
+.track-progress {
+  margin-bottom: $space-xl;
+  min-height: 2rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: $space-xs;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--role-color, $text-link);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-secondary;
+}
+
+// Mark-as-read button
+.mark-read-placeholder {
+  margin-top: $space-xl;
+  text-align: center;
+}
+
+.mark-read-btn {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $border-radius;
+  padding: $space-sm $space-lg;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: $text-heading;
+    border-color: var(--role-color, $text-link);
+  }
+}
+
+.mark-read-done {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+}
+
+.mark-read-check {
+  color: $role-end-user;
+  margin-right: $space-xs;
+}
+
+// Toast notifications
+.achievement-toast-container {
+  position: fixed;
+  bottom: $space-lg;
+  right: $space-lg;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  pointer-events: none;
+}
+
+.achievement-toast {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-left: 4px solid $text-secondary;
+  border-radius: $border-radius;
+  padding: $space-md $space-lg;
+  min-width: 280px;
+  max-width: 380px;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.is-leaving {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.achievement-toast-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.achievement-toast-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-toast-title {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $text-heading;
+}
+
+.achievement-toast-desc {
+  font-size: 0.75rem;
+  color: $text-secondary;
+}
+
+// Progress page
+.progress-overall {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $space-2xl;
+}
+
+.progress-donut {
+  position: relative;
+  width: 160px;
+  height: 160px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+}
+
+.donut-bg {
+  fill: none;
+  stroke: $border-default;
+  stroke-width: 8;
+}
+
+.donut-fill {
+  fill: none;
+  stroke: $role-security;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.donut-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donut-pct {
+  display: block;
+  font-family: $font-mono;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $text-heading;
+}
+
+.donut-sub {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-secondary;
+}
+
+.progress-tracks {
+  margin-bottom: $space-2xl;
+}
+
+.progress-track-item {
+  margin-bottom: $space-lg;
+}
+
+.progress-track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $space-xs;
+}
+
+.progress-track-name {
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.progress-track-count {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+}
+
+.progress-unread {
+  margin-top: $space-sm;
+  padding-left: $space-sm;
+}
+
+.progress-unread-label {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $text-secondary;
+}
+
+.progress-unread ul {
+  list-style: none;
+  padding-left: $space-md;
+  margin: $space-xs 0 0 0;
+}
+
+.progress-unread li {
+  margin-bottom: $space-xs;
+}
+
+.progress-unread a {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-link;
+}
+
+.progress-achievements {
+  margin-bottom: $space-2xl;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $space-md;
+  margin-top: $space-md;
+}
+
+.achievement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $space-lg;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $border-radius-lg;
+  opacity: 0.4;
+  filter: grayscale(1);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+
+  &.is-unlocked {
+    opacity: 1;
+    filter: none;
+    border-color: $border-default;
+  }
+}
+
+.achievement-card-icon {
+  font-size: 2rem;
+  margin-bottom: $space-sm;
+}
+
+.achievement-card-name {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $text-heading;
+  margin-bottom: $space-xs;
+}
+
+.achievement-card-desc {
+  font-size: 0.75rem;
+  color: $text-secondary;
+}
+
+.progress-actions {
+  text-align: center;
+  padding-top: $space-xl;
+  border-top: 1px solid $border-default;
+}
+
+.clear-progress-btn {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $role-helpdesk;
+  background: none;
+  border: 1px solid rgba($role-helpdesk, 0.3);
+  border-radius: $border-radius;
+  padding: $space-sm $space-lg;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba($role-helpdesk, 0.1);
+  }
+}
+
+.progress-loading {
+  text-align: center;
+  color: $text-secondary;
+  font-family: $font-mono;
+  font-size: 0.9rem;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crosslink-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .crosslink-arrow {
+    display: none;
+  }
+
+  .achievement-toast-container {
+    bottom: $space-sm;
+    right: $space-sm;
+    left: $space-sm;
+  }
+
+  .achievement-toast {
+    min-width: 0;
+    max-width: none;
+  }
+
+  .achievement-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

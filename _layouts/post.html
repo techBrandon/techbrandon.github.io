@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article class="blog-post">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% if page.categories.size > 0 %}
+      <span class="post-meta-sep">|</span>
+      <span class="post-category">{{ page.categories | join: ", " }}</span>
+      {% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ site.baseurl }}/" class="post-back">&larr; Back to all posts</a>
+  </footer>
+</article>

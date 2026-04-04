@@ -1,0 +1,147 @@
+// Header
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba($bg-primary, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid $border-default;
+  height: $header-height;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  max-width: $container-wide;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  color: $text-heading;
+  font-family: $font-mono;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+
+  &:hover {
+    color: $text-heading;
+  }
+}
+
+.logo-icon {
+  color: $role-it-admin;
+}
+
+.site-nav {
+  display: flex;
+  gap: $space-xs;
+}
+
+.nav-link {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+  padding: $space-xs $space-sm;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    color: $text-heading;
+    background: $bg-hover;
+  }
+
+  &--active {
+    color: var(--nav-color, $text-heading);
+    background: $bg-surface;
+  }
+}
+
+// Nav toggle (mobile)
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-sm;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: $text-secondary;
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+// Content
+.site-content {
+  min-height: calc(100vh - #{$header-height} - 60px);
+  padding: $space-2xl 0;
+}
+
+// Footer
+.site-footer {
+  border-top: 1px solid $border-default;
+  padding: $space-lg 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-md;
+  max-width: $container-wide;
+}
+
+.footer-link {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $text-secondary;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.footer-sep {
+  color: $border-default;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: $bg-primary;
+    border-bottom: 1px solid $border-default;
+    padding: $space-md $space-lg;
+    gap: $space-xs;
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    padding: $space-sm;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+}

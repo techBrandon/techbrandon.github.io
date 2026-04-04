@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<article class="hub-page" style="--role-color: {{ page.role_color }}">
+  {% include breadcrumb.html %}
+
+  <header class="hub-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="hub-subtitle">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="track-progress" data-track="{{ page.role | downcase | replace: ' ', '-' | replace: 'security-lead', 'security' }}"></div>
+
+  <div class="hub-content">
+    {{ content }}
+  </div>
+
+  {% if page.foundation_pages %}
+  <section class="hub-section">
+    <h2>Start with the foundations</h2>
+    <div class="card-grid">
+      {% for item in page.foundation_pages %}
+      <a href="{{ site.baseurl }}{{ item.url }}" class="card card--foundation" data-href="{{ item.url }}">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-desc">{{ item.description }}</p>
+        <span class="card-cta">Read &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.track_pages %}
+  <section class="hub-section">
+    <h2>Go deep</h2>
+    <div class="card-grid">
+      {% for item in page.track_pages %}
+      <a href="{{ site.baseurl }}{{ item.url }}" class="card" data-href="{{ item.url }}">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-desc">{{ item.description }}</p>
+        <span class="card-cta">Read &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</article>

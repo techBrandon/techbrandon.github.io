@@ -1,0 +1,9 @@
+- title: Home
+  url: /
+
+- title: About
+  url: /about/
+
+- title: Passkey Path
+  url: /passkey-path/
+  color: "#58a6ff"

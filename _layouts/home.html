@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<div class="blog-home">
+  <div class="blog-hero">
+    <h1>{{ site.title | default: page.title }}</h1>
+    {% if site.description %}
+    <p class="blog-subtitle">{{ site.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" class="post-card">
+      <div class="post-card-meta">
+        <time class="post-card-date" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%b %-d, %Y" }}
+        </time>
+        {% if post.categories.size > 0 %}
+        <span class="post-card-category">{{ post.categories | first }}</span>
+        {% endif %}
+      </div>
+      <h2 class="post-card-title">{{ post.title }}</h2>
+      {% if post.description %}
+      <p class="post-card-desc">{{ post.description }}</p>
+      {% elsif post.excerpt %}
+      <p class="post-card-desc">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      {% endif %}
+      <span class="post-card-cta">Read &rarr;</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  {{ content }}
+</div>
