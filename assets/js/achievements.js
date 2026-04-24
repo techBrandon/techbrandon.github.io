@@ -15,8 +15,7 @@
   var SHARED_PAGES = [
     '/passkey-path/shared/what-is-a-passkey/',
     '/passkey-path/shared/how-entra-passkeys-work/',
-    '/passkey-path/shared/device-bound-vs-sync/',
-    '/passkey-path/shared/glossary/'
+    '/passkey-path/shared/device-bound-vs-sync/'
   ];
 
   var TRACKS = {
@@ -24,7 +23,6 @@
       name: 'IT Admin',
       color: '#58a6ff',
       pages: [
-        '/passkey-path/it-admin/',
         '/passkey-path/it-admin/entra-policy-setup/',
         '/passkey-path/it-admin/rollout-planning/',
         '/passkey-path/it-admin/attestation-aaguids/',
@@ -37,7 +35,6 @@
       name: 'End User',
       color: '#3fb950',
       pages: [
-        '/passkey-path/end-user/',
         '/passkey-path/end-user/what-changes/',
         '/passkey-path/end-user/setup-authenticator/',
         '/passkey-path/end-user/setup-security-key/',
@@ -50,7 +47,6 @@
       name: 'Security Lead',
       color: '#d29922',
       pages: [
-        '/passkey-path/security/',
         '/passkey-path/security/risk-assessment/',
         '/passkey-path/security/downgrade-attacks/',
         '/passkey-path/security/phishing-resistant/',
@@ -62,7 +58,6 @@
       name: 'Helpdesk',
       color: '#f85149',
       pages: [
-        '/passkey-path/helpdesk/',
         '/passkey-path/helpdesk/device-loss/',
         '/passkey-path/helpdesk/tap-issuance/',
         '/passkey-path/helpdesk/identity-verify/',
@@ -180,8 +175,7 @@
 
   function isTrackComplete(data, trackId) {
     var prog = getTrackProgress(data, trackId);
-    var shared = getSharedProgress(data);
-    return prog.read === prog.total && shared.read === shared.total;
+    return prog.total > 0 && prog.read === prog.total;
   }
 
   function hasPageInEachTrack(data) {
