@@ -1,0 +1,38 @@
+name: Feedback, bug, or incorrect information
+description: Report a broken link, incorrect content, or share a suggestion
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to share feedback. If you'd rather reach out
+        privately or for something other than a content issue, see
+        [the About page](https://techbrandon.github.io/about/) for social links.
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of feedback is this?
+      options:
+        - Broken link or missing content
+        - Incorrect or outdated information
+        - Suggestion or feature request
+        - Question
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Affected page URL
+      description: If this is about a specific page, paste the URL here.
+      placeholder: https://techbrandon.github.io/passkey-path/...
+    validations:
+      required: false
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What's wrong, what would you change, or what question do you have?
+    validations:
+      required: true

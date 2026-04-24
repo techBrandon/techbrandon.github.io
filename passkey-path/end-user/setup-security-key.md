@@ -22,7 +22,7 @@ This guide walks you through registering a FIDO2 security key (like a YubiKey) a
 
 Make sure you have:
 
-- **Your security key** - provided by your IT team (commonly a YubiKey 5 series, Feitian, or Google Titan key)
+- **Your security key** - provided by your IT team or consumer purchased device (examples: YubiKey 5 series, Feitian, or Google Titan key)
 - A **computer with a USB port** (or NFC support if your key is NFC-only)
 - A **supported browser** - Chrome, Edge, or Safari (Firefox has limited support)
 - Your key's **PIN** - if your key has been used before, you may have set a PIN. If it's brand new, you'll create one during setup.
@@ -41,17 +41,9 @@ Sign in with your work account if prompted.
 
 Click **"+ Add sign-in method"**
 
-In the dropdown, select **"Security key"**
+In the dropdown, select **"Passkey"**
 
-Click **Add**
-
-### 3. Choose your key type
-
-Select whether you're using a **USB** or **NFC** key.
-
-For most setups, choose **USB** - it's the most reliable option.
-
-### 4. Insert and set up your key
+### 3. Insert and set up your key
 
 1. **Insert your security key** into a USB port on your computer
 2. **Create or enter your PIN** - if the key is new, you'll set a PIN. If you've used it before, enter your existing PIN. This PIN is specific to the security key, not your work account.
@@ -89,7 +81,7 @@ Some keys also support biometrics (like the YubiKey Bio). If your key has a fing
 
 ## Troubleshooting
 
-**"Security key" isn't in the dropdown**
+**"Passkey" isn't in the dropdown**
 Your IT team may not have enabled FIDO2 security keys for your account. Check with them.
 
 **"This security key is not allowed"**

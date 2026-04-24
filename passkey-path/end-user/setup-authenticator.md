@@ -22,10 +22,10 @@ This guide walks you through registering a passkey in the Microsoft Authenticato
 
 Make sure you have:
 
-- **Microsoft Authenticator** installed and updated to the latest version (6.8.0+)
+- **Microsoft Authenticator** installed and updated to the latest version (6.2+)
   - [Download for iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)
   - [Download for Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)
-- Your phone's operating system is up to date (iOS 16+ or Android 9+)
+- Your phone's operating system is up to date (iOS 17+ or Android 14+)
 - You're already signed in to your work account in Authenticator
 - A computer with a browser open (the setup starts on the web)
 
@@ -52,11 +52,10 @@ Click **Add**
 The setup wizard will walk you through several steps:
 
 1. **Confirm your identity** - you may need to verify with your current sign-in method (password + existing MFA) one more time
-2. **Choose your device** - select whether you're setting up on an iPhone or Android device
-3. **Open Authenticator** - the wizard will prompt you to open the Authenticator app on your phone
-4. **Scan the QR code** - if prompted, scan the QR code shown on screen with your phone's camera
-5. **Verify with biometrics** - your phone will ask for your fingerprint or face to confirm
-6. **Name your passkey** - give it a recognizable name like "Work iPhone" or "My Pixel"
+2. **Open Authenticator** - the wizard will prompt you to open the Authenticator app on your phone
+3. **Scan the QR code** - if prompted, scan the QR code shown on screen with your phone's camera
+4. **Verify with biometrics** - your phone will ask for your fingerprint or face to confirm
+5. **Name your passkey** - give it a recognizable name like "Work iPhone" or "My Pixel"
 
 ### 4. Test it
 

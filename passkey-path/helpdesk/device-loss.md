@@ -50,11 +50,20 @@ The user contacts helpdesk via phone, in-person, or email (from a personal accou
 
 ### Step 2: Verify identity
 
-**Do not skip this step.** This is the most critical part of the process.
+**This step is the most critical part of the process.** Nearly all authentication risk is shifted to this step when using phishing-resistant authentication methods.
 
 An attacker who steals a phone may call helpdesk pretending to be the victim, hoping to get a TAP and register their own passkey. The identity verification process is your defense.
 
 Follow the [Identity Verification](/passkey-path/helpdesk/identity-verify/) procedure. Document the verification method used.
+
+### Step 2a: Revoke active sessions
+
+Especially for suspected-theft cases, revoke all active sessions for the user as soon as identity is verified. This invalidates any tokens still cached on the lost device so an attacker can't keep using what's already signed in, even before the passkey is replaced.
+
+1. Go to **Entra portal > Users > [user] > Revoke sessions**
+2. Confirm the revocation
+
+See Microsoft's [Revoke user access in an emergency](https://learn.microsoft.com/en-us/entra/identity/users/users-revoke-access) for the full mechanics and what it does and doesn't cover. The [Passkey Risk Assessment](/passkey-path/security/risk-assessment/) page lists session revocation as the primary mitigation for device loss / theft.
 
 ### Step 3: Check existing passkeys
 
@@ -64,7 +73,9 @@ Before issuing a TAP, check if the user has other passkeys registered:
 2. Review the registered passkeys and other methods
 3. If the user has another passkey on a different device, they can sign in with that - no TAP needed
 
-{% include placeholder-image.html description="User's authentication methods page showing registered passkeys with device names, registration dates, and the option to delete individual methods" portal_url="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserProfileMenuBlade/~/AuthenticationMethods" %}
+![User's authentication methods page showing registered passkeys with device names, registration dates, and the option to delete individual methods](/assets/images/Users-Auth-Methods.png)
+
+[View in Entra portal](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserProfileMenuBlade/~/AuthenticationMethods)
 
 ### Step 4: Issue a Temporary Access Pass (if needed)
 

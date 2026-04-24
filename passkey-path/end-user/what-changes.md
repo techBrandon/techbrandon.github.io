@@ -14,7 +14,7 @@ next_pages:
     description: "Use your fingerprint or face on your PC"
 ---
 
-Your IT team is rolling out passkeys. Here's what changes for you.
+Your organization may be rolling out passkeys, or you may have noticed consumer apps offering them. Either way, here's what changes for you.
 
 ## The short version
 
@@ -22,24 +22,19 @@ Instead of typing a password and then approving a push notification or entering 
 
 ## Before vs after
 
-| Step | With passwords | With a passkey |
-|------|---------------|----------------|
-| Enter username | Yes | Yes |
-| Type password | Yes | **No** |
-| Wait for SMS/push/code | Yes | **No** |
-| Use fingerprint, face, or PIN | No | **Yes** |
-| Total time | 15-30 seconds | **3-5 seconds** |
+**With a password:** Enter username → type password → wait for SMS or push → approve on phone → signed in *(15-30 seconds)*
+
+**With a passkey:** Enter username → verify with fingerprint, face, or PIN → signed in *(3-5 seconds)*
 
 That's the whole change. One step instead of three.
 
 ## What you'll need to do
 
-Your IT team will let you know when it's your turn. When they do:
-
-1. **Set up your passkey** - a one-time process that takes about 2 minutes. You'll go to a website, choose your method, and follow the prompts. Your IT team will tell you which method to use:
+1. **Set up your passkey** - a one-time process that takes about 2 minutes. You'll go to a website, choose your method, and follow the prompts.
    - [Microsoft Authenticator on your phone](/passkey-path/end-user/setup-authenticator/)
-   - [A hardware security key](/passkey-path/end-user/setup-security-key/) (if your team gave you one)
+   - [A hardware security key](/passkey-path/end-user/setup-security-key/)
    - [Windows Hello on your PC](/passkey-path/end-user/setup-windows-hello/)
+   - A syncable passkey in your platform's credential manager (iCloud Keychain, Google Password Manager, or a third-party password vault). This one leaves the end-user path - see [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/) for the trade-offs.
 
 2. **Sign in with your passkey** - from that point on, sign-in uses your fingerprint, face, or PIN instead of a password
 
@@ -50,18 +45,18 @@ Your IT team will let you know when it's your turn. When they do:
 - You'll still go to the same websites and apps
 - Your email, files, and everything else works exactly the same
 - Your username doesn't change
-- You can still use multiple devices
+- You can still use multiple devices, with some caveats - see [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/) for when a passkey follows you across devices and when it doesn't
 
 ## What you don't need to worry about
 
 - **You don't need to remember a new password** - there is no password with a passkey
-- **Your fingerprint/face data stays on your device** - it's never sent to Microsoft or your employer. It only unlocks the passkey locally.
-- **Your IT team can't see your biometrics** - they can see that you registered a passkey, but not what fingerprint or face you used
+- **Your fingerprint/face data stays on your device** - it's never sent to Microsoft or application owner. It only unlocks the passkey locally.
+- **Your biometric data stays safe** - the application knows that you registered a passkey, but not what fingerprint or face you used
 
 ## Common questions
 
 **Do I still need my password?**
-During the transition, your password may still work for some things. Eventually, your IT team will phase it out entirely. They'll let you know the timeline.
+During the transition, your password may still work as a backup. Eventually, your password may phase out entirely. You'll be informed before this happens.
 
 **What if my fingerprint reader doesn't work?**
 You can use a PIN as a fallback. The PIN is set up during passkey registration.
@@ -70,4 +65,4 @@ You can use a PIN as a fallback. The PIN is set up during passkey registration.
 Yes. You can register a passkey on your phone and on your computer, or on multiple security keys. Having more than one is actually recommended - if you lose one, you still have the other.
 
 **What if I lose my phone or key?**
-Contact your helpdesk. They'll verify your identity and give you a temporary way to sign in so you can set up a new passkey. See [What to Do If You Lose Your Device](/passkey-path/end-user/lost-device/) for the full process.
+Contact support. They'll verify your identity and give you a temporary way to sign in so you can set up a new passkey. See [What to Do If You Lose Your Device](/passkey-path/end-user/lost-device/) for the full process.

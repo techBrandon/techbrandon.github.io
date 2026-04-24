@@ -77,7 +77,7 @@ Passkeys eliminate several of the above categories entirely and reduce others. B
 | Recovery process exploitation | Attackers target the TAP issuance process instead of the credential itself | Strong [identity verification](/passkey-path/helpdesk/identity-verify/) before TAP issuance |
 | Syncable key compromise | If a user's platform account (Apple ID, Google account) is compromised, synced passkeys could be exposed | Use device-bound keys for privileged accounts; enforce platform account MFA |
 | Downgrade attacks | During transition, attackers target legacy methods still enrolled alongside passkeys | [Remove legacy credentials](/passkey-path/security/credential-lifecycle/) on a defined timeline |
-| Device loss/theft | Physical loss of the authenticator device | Remote wipe, PIN/biometric protection, multiple registered passkeys |
+| Device loss/theft | Physical loss of the authenticator device | Remote wipe, PIN/biometric protection, multiple registered passkeys, revoke the lost passkey and active sessions via the [Device Loss Recovery Playbook](/passkey-path/helpdesk/device-loss/). Conditional Access enforcement for privileged scenarios mitigates this as well. |
 | Vendor lock-in | Passkey portability across platforms is still maturing | Register on multiple platforms; FIDO2 keys are platform-independent |
 
 ### Risks that remain unchanged
@@ -97,7 +97,7 @@ For most organizations, the risk trade-off is strongly favorable:
 - **Introduced risks** (recovery exploitation, downgrade attacks) are lower-volume and mitigable through process design
 - **Unchanged risks** (endpoint compromise, post-auth token theft) need to be addressed regardless of authentication method - they're not a reason to avoid passkeys
 
-The framing for leadership: passkeys don't solve everything, but they eliminate the attack categories behind most identity-related incidents.
+The framing for leadership: passkeys don't solve everything, but they eliminate the attack categories behind most identity-related incidents. Don't let perfect security get in the way of good progress - the attack categories passkeys eliminate are the ones driving the majority of identity incidents today.
 
 ## Assessment template
 

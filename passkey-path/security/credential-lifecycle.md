@@ -28,12 +28,12 @@ In order of security impact:
 
 ### 1. Passwords
 
-Passwords are the primary downgrade target. While a password exists on an account, an attacker can use it - regardless of what other methods are available.
+Passwords are the primary downgrade target. While a usable password exists on an account, an attacker can use it - regardless of what other methods are available.
 
 **How to disable in Entra:**
-- Per-user: set the account to "passwordless" once the user has a passkey registered and verified
-- At scale: use Entra's passwordless authentication configuration combined with CA policies that reject password-based sign-ins
-- Monitor sign-in logs for password usage before disabling - make sure the user isn't relying on it for any workflow
+- **Conditional Access first.** Create a CA policy that requires phishing-resistant MFA (or a custom authentication strength that excludes password-based combinations). Passwords aren't literally removable from an Entra account, so CA is the enforcement mechanism that makes them unusable for covered resources.
+- **Randomize the password** via admin action or Microsoft Graph once CA enforcement is in place. The account still has a password, but nobody - including the user - knows what it is. This is as close as Entra gets to "no password." Use the [Reset-MgUserPassword](https://learn.microsoft.com/en-us/graph/api/user-update) Graph API or reset from the Entra admin center with a generated value, and do not communicate the value to the user.
+- **Monitor sign-in logs** for password usage before randomizing - make sure the user isn't relying on it for any workflow.
 
 **Blocker:** Legacy applications that require passwords. See [Legacy Apps and Coexistence](/passkey-path/it-admin/legacy-coexistence/).
 
@@ -42,35 +42,48 @@ Passwords are the primary downgrade target. While a password exists on an accoun
 SMS-based MFA is vulnerable to SIM swapping, SS7 interception, and social engineering of carrier staff. Voice calls have similar risks.
 
 **How to remove in Entra:**
-- Go to **Protection > Authentication methods > SMS** and scope it away from users who have passkeys
+- Go to **Protection > Authentication methods > SMS** and exclude users who have passkeys
 - Remove phone numbers from user authentication methods: **Users > [user] > Authentication methods**
-- Be aware that some self-service password reset (SSPR) flows may rely on SMS - update SSPR policy first
+
+**Blocker:** Self-service password reset (SSPR) flows may rely on SMS as a verification factor. Update the SSPR policy to use passkey-compatible factors before removing SMS, or users will lose the ability to reset their own passwords.
 
 ### 3. Authenticator push notifications
 
 Traditional Authenticator push (approve/deny) is vulnerable to MFA fatigue attacks. Once a user has a passkey in Authenticator, the push-based approval is redundant.
 
-**How to migrate:**
-- In Authenticator authentication method policy, set the mode to "Passwordless" instead of "Any"
-- This disables the push notification flow while preserving the passkey capability
-- Users who haven't enrolled a passkey yet will lose push MFA - only do this after enrollment is confirmed
+**How to retire:**
+- Enforce phishing-resistant MFA via Conditional Access for the groups that have completed passkey enrollment. Push notifications do not satisfy the phishing-resistant strength, so covered sign-ins will route to the passkey in Authenticator instead. See [Overview of Conditional Access authentication strengths](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strengths) for the built-in strength definitions.
+- In **Protection > Authentication methods > Microsoft Authenticator**, narrow the targeted groups so push notifications are only offered to users who haven't yet enrolled a passkey. As enrollment completes, shrink the scope until no one has push available.
+
+**Blocker:** Users who haven't enrolled a passkey yet will lose push MFA if the scope is narrowed too aggressively. Only shrink the scope as each group confirms enrollment.
 
 ### 4. App passwords
 
-App passwords are static credentials issued for legacy applications that don't support modern auth. They bypass MFA entirely.
+App passwords are a legacy feature: static credentials issued for pre-modern-auth clients (Office 2010 and earlier, Apple Mail before iOS 11) that don't understand the MFA prompt. They bypass MFA entirely. Most organizations have already blocked legacy authentication via Conditional Access, which makes app passwords nonfunctional in practice - but the stored credentials remain on user accounts unless you clean them up. See [App passwords for Microsoft Entra multifactor authentication](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-mfa-app-passwords) for the current Microsoft guidance.
 
 **How to remove:**
-- Identify users with app passwords: use the Entra admin center or PowerShell
-- Revoke app passwords: **Users > [user] > Authentication methods > App passwords > Delete**
-- Migrate the underlying applications off legacy auth (see [Legacy Apps](/passkey-path/it-admin/legacy-coexistence/))
+- If your tenant still allows users to create app passwords, disable that first (per the Microsoft doc above). This also blocks new creations.
+- Block legacy authentication via Conditional Access - this neutralizes any app passwords that are still on accounts. See [Legacy Apps and Coexistence](/passkey-path/it-admin/legacy-coexistence/).
+- Clean up stored app passwords: **Users > [user] > Authentication methods > App passwords > Delete**.
+
+**Blocker:** Any remaining legacy application that users still need and that still requires an app password. Migration off legacy auth is the prerequisite for full cleanup.
 
 ### 5. TOTP (third-party authenticator apps)
 
-Software TOTP tokens (Google Authenticator, Authy, etc.) are phishable via AiTM proxies. If users registered these as MFA methods, remove them after passkey enrollment.
+Software TOTP tokens (Google Authenticator, Authy, etc.) are phishable via AiTM proxies - an attacker's relay page can prompt for and immediately replay the six-digit code. If users registered these as MFA methods, retire them after passkey enrollment.
+
+**How to remove in Entra:**
+- Go to **Protection > Authentication methods > Third-party software OATH tokens** and exclude users who have passkeys enrolled
+- For users with registered TOTP tokens: **Users > [user] > Authentication methods** and delete the OATH entry
+- Hardware OATH tokens follow the same path under **Hardware OATH tokens (Preview)**
+
+**Blocker:** Users who rely on TOTP for a specific application that doesn't yet support passkeys. Identify the applications first and retire the TOTP tokens alongside the application migration.
+
+**Monitoring:** Entra sign-in logs surface the authentication method used. Filter on `authenticationDetails` for OATH-based sign-ins during the retirement window and investigate any that appear after passkey enrollment was expected to be complete.
 
 ## Retirement timeline
 
-Here's a practical timeline pegged to passkey enrollment phases:
+Here's a practical timeline tied to passkey enrollment phases:
 
 | Phase | Timing | Action |
 |-------|--------|--------|
@@ -103,12 +116,13 @@ Track these metrics to demonstrate progress and identify blockers:
 - Trend over time (should shift heavily toward passkeys)
 
 **Stale passwords**
-- Users whose passwords haven't been used in 30/60/90 days
-- These are candidates for immediate password disable
+- Users whose passwords haven't been used in 30/60/90 days. Surface via Entra sign-in logs (`signInActivity`) or the [Get-MgAuditLogSignIn](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.reports/get-mgauditlogsignin) PowerShell cmdlet filtering on authentication method.
+- These are candidates for immediate password randomization.
 
-**Legacy auth sign-ins**
-- Sign-ins using legacy authentication protocols
-- Each one represents a workflow blocking full credential retirement
+**Password-based sign-ins by application**
+- Which specific applications are still driving password sign-ins for passkey-enrolled users
+- Each app on this list is either a misconfiguration (CA policy gap) or a legacy app that's blocking full retirement
+- Prioritize fixes by sign-in volume
 
 ## The conversation with leadership
 

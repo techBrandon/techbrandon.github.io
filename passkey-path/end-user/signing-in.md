@@ -36,7 +36,11 @@ When signing into mobile apps (Outlook, Teams, OneDrive):
 
 ## Signing in on a different computer
 
-If you're using a computer that doesn't have your passkey (a conference room PC, a colleague's machine, etc.), you can sign in using your phone:
+If you're using a computer that doesn't have your passkey (a new device, a conference room PC, a colleague's machine, etc.), you can sign in using your phone.
+
+**This section describes the Microsoft Authenticator workflow.** If your passkey lives in a platform credential manager (iCloud Keychain, Google Password Manager, or a password vault) instead of Authenticator, the flow is different - it typically requires the credential manager or browser extension to be installed and signed in on the computer you're using. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/) for the distinction.
+
+With a passkey in Microsoft Authenticator on your phone:
 
 1. Enter your email at the sign-in page
 2. Choose **"Sign in with a passkey on another device"** (or similar wording)

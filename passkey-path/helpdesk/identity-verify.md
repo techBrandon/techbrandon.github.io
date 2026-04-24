@@ -22,17 +22,17 @@ crosslinks:
 
 This is the hardest part of passkey support, and the part that matters most. When a user calls saying they lost their device and need a TAP, you need to confirm they are who they say they are.
 
-If you issue a TAP to the wrong person, they register their own passkey on the account. The attacker now has phishing-resistant access to the victim's account. A passkey system getting compromised through the helpdesk has happened before.
+If you issue a TAP to the wrong person, they register their own passkey on the account. The attacker now has phishing-resistant access to the victim's account. A passkey system getting compromised through the helpdesk happens more often than you'd think.
 
 ## Why this is harder than password resets
 
 With passwords, the risk of a bad reset is limited: the attacker gets temporary access until the real user notices and resets again. With passkeys, a bad recovery lets the attacker register a persistent credential. The stakes are higher.
 
-## Verification tiers
+## Verification standards
 
-Not every account needs the same verification rigor. Define tiers based on role sensitivity:
+Not every account needs the same verification rigor. Define standards based on role sensitivity:
 
-### Tier 1: Standard users
+### Group 1: Standard users
 
 **Minimum verification - two of the following:**
 - Confirm employee ID number
@@ -40,21 +40,21 @@ Not every account needs the same verification rigor. Define tiers based on role 
 - Confirm recent activity that only the user would know (last project worked on, recent meeting attended)
 - Callback to the user's registered phone number on file in HR systems (not the number they called from)
 
-### Tier 2: Sensitive roles (finance, HR, legal)
+### Group 2: Sensitive roles (finance, HR, legal)
 
-**Tier 1 requirements plus one of:**
+**Group 1 requirements plus one of:**
 - Manager verbal approval (contact the manager directly, don't rely on the caller to transfer you)
 - Video call with camera on - match to employee photo in HR system
 - In-person verification at an office with photo ID
 
-### Tier 3: Privileged accounts (admins, executives)
+### Group 3: Privileged accounts (admins, executives)
 
-**Tier 2 requirements plus:**
+**Group 2 requirements plus:**
 - In-person verification required (no remote recovery for admin accounts)
 - Security team notification before TAP issuance
 - If remote: video call with photo ID verification AND manager/director approval
 
-Your organization should define these tiers and publish them as a formal helpdesk procedure. The examples above are a starting point - adapt them to your environment.
+Your organization should define these standards and publish them as a formal helpdesk procedure. The examples above are a starting point, not a one-size-fits-all framework. Adapt standards to meet your environment.
 
 ## What to verify
 
@@ -73,8 +73,10 @@ These are hard for an attacker to obtain or fake:
 - **Name, email, department** - easily found on LinkedIn or company websites
 - **Phone number they're calling from** - can be spoofed
 - **"I'm [name]'s assistant"** - social engineering tactic
-- **Urgency** - "I need this right now, I'm about to present to the board" is a pressure technique attackers use
+- **Urgency** - pressure techniques attackers use to bypass verification
 - **Knowledge of IT systems** - an attacker researching the target may know what tools you use
+
+See [When to Escalate](/passkey-path/helpdesk/escalation/) for detailed patterns and response playbooks on social engineering tactics.
 
 ### What to never accept
 

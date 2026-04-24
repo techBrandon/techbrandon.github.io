@@ -45,7 +45,7 @@ From the user's perspective, signing in with a passkey looks like unlocking your
 
 The biometric or PIN is local verification only - it unlocks access to the private key on your device. The biometric data itself never leaves your device and is never sent to the service.
 
-This is also why passkeys count as multi-factor authentication in a single step. The device is "something you have" and the biometric or PIN is "something you are" or "something you know" - two factors, one action.
+This is also why a single passkey sign-in satisfies multi-factor authentication on its own. Two of the three classical MFA factors are present in one action: possession (the device holding the private key) plus inherence or knowledge (the biometric or PIN that unlocks it). Entra treats a passkey sign-in as MFA-satisfied, so a Conditional Access policy requiring MFA or phishing-resistant MFA is met without a second prompt.
 
 ## What it looks like in practice
 

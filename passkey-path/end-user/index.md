@@ -30,8 +30,8 @@ track_pages:
     description: "Steps to take if your phone or security key is lost or stolen"
 ---
 
-Your organization is moving to passkeys. Instead of typing a password, you'll use your fingerprint, face, or PIN on your phone or computer to sign in.
+Maybe your organization is migrating to passkeys, or maybe you've noticed more consumer apps asking you to set one up. What's a passkey, and why do I need one? The short version: instead of typing a password, you'll use your fingerprint, face, or your phone to sign in.
 
 This track covers what's changing, how to set up your passkey, what signing in looks like afterward, and what to do if something goes wrong.
 
-If you want the technical details, the foundation page below explains how passkeys work. Otherwise, jump to the setup guide for whichever method your IT team told you to use.
+If you want the technical details, the foundation page below explains how passkeys work. Otherwise, jump to the setup guide for whichever method you plan to use.

@@ -18,9 +18,11 @@ crosslinks:
 
 Passkey deployment often intersects with compliance requirements. This page maps passkeys to the frameworks your organization is most likely dealing with.
 
+> This page is a starting point for conversations with your compliance or audit team - not a substitute for a qualified compliance audit. Framework requirements vary by version, scope, and interpretation. Confirm any specific control mappings with your auditor before acting on them.
+
 ## NIST 800-63: Digital Identity Guidelines
 
-NIST 800-63 revision 4 (2024) defines authenticator assurance levels (AALs) that directly apply to passkeys:
+[NIST Special Publication 800-63-4](https://pages.nist.gov/800-63-4/) defines authenticator assurance levels (AALs) that directly apply to passkeys:
 
 ### AAL1 (Single-factor)
 - Requires at least one authentication factor
@@ -72,7 +74,7 @@ Common insurance questionnaire requirements:
 | "Phishing-resistant MFA" | Passkeys directly satisfy this (newer questionnaires) |
 | "MFA for all users" | Requires org-wide passkey deployment |
 
-Some insurers are beginning to differentiate premiums based on MFA strength. Moving from SMS-based MFA to phishing-resistant passkeys may improve your coverage terms or reduce premiums. Ask your broker.
+Questionnaire wording varies widely. Pull your carrier's current renewal questionnaire and map each control line-by-line against your passkey deployment state - don't rely on generalizations.
 
 ## Executive Order 14028 (US Federal)
 
@@ -85,19 +87,18 @@ Key points:
 
 ## PCI DSS 4.0
 
-PCI DSS 4.0 (effective March 2025) strengthens MFA requirements for access to cardholder data environments:
+[PCI DSS 4.0.1](https://www.pcisecuritystandards.org/document_library/) (the currently enforced version of the standard as of 2025) strengthens MFA requirements for access to cardholder data environments (requirement 8.4). Requirement 8.5 also addresses MFA strength.
 
-- MFA is required for all access to the CDE (not just remote access)
-- The standard doesn't explicitly require phishing-resistant MFA, but the spirit of the requirement favors it
-- Using passkeys for CDE access positions you ahead of likely future PCI guidance
+- MFA is required for all non-console administrative access and for all access into the CDE
+- The standard doesn't explicitly require phishing-resistant MFA, but specific sub-requirements (anti-replay, requiring all factors to succeed, etc.) are harder to satisfy with SMS / push than with passkeys
+
+Map your specific passkey implementation to the 8.4 and 8.5 sub-requirements with your QSA - don't treat "we have passkeys" as automatic compliance.
 
 ## SOC 2
 
-SOC 2 doesn't prescribe specific authentication technologies, but auditors evaluate the strength of your authentication controls. Having phishing-resistant MFA deployed demonstrates:
+SOC 2 doesn't prescribe specific authentication technologies. The Trust Services Criteria (CC6.1 and CC6.2 for logical access) are written to let the auditor evaluate the control design and operating effectiveness your organization chooses.
 
-- **CC6.1** - Logical access security: strong authentication controls in place
-- **CC6.3** - Access to systems: MFA that resists common attack techniques
-- Auditors will notice phishing-resistant MFA over weaker alternatives
+What this means in practice: passkeys don't automatically check a SOC 2 box, but they give the auditor strong evidence that your authentication controls meet the intent of CC6.1/CC6.2 (restricting access to authorized users with credentials that resist common attack techniques). Discuss specific control mappings with your SOC 2 auditor.
 
 ## Building the compliance case
 

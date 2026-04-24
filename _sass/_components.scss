@@ -815,6 +815,52 @@
   font-size: 0.9rem;
 }
 
+.report-issue-link {
+  position: fixed;
+  bottom: $space-lg;
+  right: $space-lg;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  min-height: 44px;
+  padding: $space-sm $space-md;
+  font-size: 0.8rem;
+  font-family: $font-sans;
+  color: $text-secondary;
+  background: $bg-surface-raised;
+  border: 1px solid $border-default;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $text-link;
+    border-color: $text-link;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $text-link;
+    outline-offset: 2px;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    bottom: $space-md;
+    right: $space-md;
+    padding: $space-sm;
+
+    .report-issue-link__label {
+      display: none;
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .role-grid {

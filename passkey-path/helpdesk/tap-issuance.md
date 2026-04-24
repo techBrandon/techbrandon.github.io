@@ -20,14 +20,13 @@ A Temporary Access Pass (TAP) is a time-limited passcode that lets a user sign i
 
 ## Before you can issue TAPs
 
-Your IT admin must have TAP enabled as an authentication method in Entra. If you try to issue one and the option isn't available, contact your admin team to enable it at:
-
-**Entra portal > Protection > Authentication methods > Temporary Access Pass**
+Your IT admin must have TAP enabled as an authentication method in Entra. If you try to issue one and the option isn't available, contact your admin team and point them at [Enabling Temporary Access Pass](/passkey-path/it-admin/entra-policy-setup/#enabling-temporary-access-pass) for the config steps.
 
 ## How to issue a TAP
 
 ### Prerequisites
-- You need at least the **Authentication Administrator** role in Entra (or a custom role with `microsoft.directory/users/authenticationMethods/create` permission)
+- You need at least the **Authentication Administrator** role in Entra (or a custom role with `microsoft.directory/users/authenticationMethods/create` permission). This is Microsoft's documented minimum for issuing a TAP to non-admin users; for privileged users you need Privileged Authentication Administrator. Source: [Configure a Temporary Access Pass](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-temporary-access-pass#create-a-temporary-access-pass).
+- If giving helpdesk staff the full Authentication Administrator role feels broader than you want, the custom-role approach above is the least-privilege path - it grants only TAP issuance (and other auth-method management on users) without the rest of Authentication Administrator.
 - You have [verified the user's identity](/passkey-path/helpdesk/identity-verify/)
 
 ### Step-by-step
@@ -44,7 +43,11 @@ Your IT admin must have TAP enabled as an authentication method in Entra. If you
 7. Click **Add**
 8. **Copy the TAP** immediately - it's shown only once
 
-{% include placeholder-image.html description="Add authentication method dialog for a user, showing Temporary Access Pass selected with fields for start time, lifetime in hours, and one-time use toggle. The generated TAP code is displayed after creation." portal_url="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserProfileMenuBlade/~/AuthenticationMethods" %}
+![Add authentication method dialog with Temporary Access Pass selected, showing start time, lifetime in hours, and one-time use toggle](/assets/images/Add-TAP.png)
+
+![Generated TAP code displayed after creation, visible only once before it must be copied and delivered to the user](/assets/images/Add-TAP-2.png)
+
+[View in Entra portal](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserProfileMenuBlade/~/AuthenticationMethods)
 
 ### Delivering the TAP to the user
 

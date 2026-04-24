@@ -32,7 +32,10 @@ An authentication method is phishing-resistant when it cannot be intercepted by 
 
 Methods that meet this bar in Entra:
 - Passkeys (FIDO2 security keys, Authenticator passkeys, platform passkeys)
+- Windows Hello for Business
 - Certificate-based authentication (smart cards, virtual smart cards)
+
+*Source: Microsoft's built-in [Phishing-resistant MFA authentication strength](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strengths) lists FIDO2 security key, Windows Hello for Business (or platform credential), and Entra certificate-based authentication (multifactor) as the phishing-resistant combinations.*
 
 Methods that **don't** meet this bar:
 - Password + SMS code
@@ -92,12 +95,14 @@ If you need to present this to leadership or a security review board:
 Eliminate phishing as a viable attack vector against organizational authentication by deploying and enforcing phishing-resistant MFA for all users and applications.
 
 **2. Current state**
+
+Include the following environment-specific details:
 - Authentication methods in use today
 - Phishing incident frequency and impact
 - MFA bypass incidents (fatigue, AiTM, SIM swap)
 
 **3. Target state**
-- All users authenticated via passkeys or certificate-based auth
+- All users authenticated via passkeys, Windows Hello for Business, or certificate-based auth
 - Conditional Access enforcing phishing-resistant MFA for all cloud apps
 - Legacy credentials (passwords, SMS, push) removed
 - Recovery process secured with verified identity checks
@@ -110,6 +115,7 @@ Eliminate phishing as a viable attack vector against organizational authenticati
 | CA policy in report-only mode | | IT Admin |
 | Org-wide passkey enrollment complete | | IT Admin |
 | CA policy enforced for all users | | IT Admin |
+| Identify applications that can't use modern auth | | App owners + IT Admin |
 | Legacy MFA methods removed | | IT Admin + Security |
 | Passwords disabled for standard users | | IT Admin + Security |
 | Legacy applications migrated off basic auth | | App owners |

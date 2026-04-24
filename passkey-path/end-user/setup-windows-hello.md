@@ -17,7 +17,7 @@ If you use a Windows PC for work, Windows Hello lets you sign in with your finge
 
 Make sure you have:
 
-- **Windows 10 (version 1903 or later) or Windows 11**
+- **Windows 10 version 1903 or later, or Windows 11** for Entra-joined devices. Hybrid-joined devices need Windows 10 version 2004 or later.
 - A device managed by your organization (enrolled in Intune or joined to your work domain)
 - **For fingerprint:** a fingerprint reader (built-in on most modern laptops)
 - **For face recognition:** a Windows Hello-compatible camera (the IR cameras on Surface devices and most business laptops)
@@ -50,13 +50,17 @@ Set up at least one biometric method plus a PIN as fallback.
 
 ### 3. Register as a passkey for your work account
 
-If your IT team has enabled Windows Hello for Business, this may happen automatically when you sign in to your work account on the device. If not:
+If your IT team has enabled Windows Hello for Business, the credential is typically provisioned automatically when you sign in to your Entra-joined device. In that case there's nothing to do - Windows Hello will already be offered as a sign-in option at work websites.
+
+If it wasn't provisioned automatically, you can register a passkey backed by Windows Hello through Security info:
 
 1. Go to **[https://mysignins.microsoft.com/security-info](https://mysignins.microsoft.com/security-info)**
 2. Click **"+ Add sign-in method"**
-3. Select **"Windows Hello"** or **"Passkey"**
+3. Select **"Passkey"** (or "Security key" in some tenants - Windows Hello registers through the same flow)
 4. Follow the prompts - your browser will ask you to verify with your Windows Hello fingerprint, face, or PIN
 5. Name the passkey (e.g., "Work Laptop")
+
+If "Passkey" isn't available in the dropdown, your IT team may not have enabled self-service passkey registration yet. Contact your helpdesk.
 
 ### 4. Test it
 
@@ -93,3 +97,5 @@ This means your IT team is managing the setup through Intune or Group Policy. Th
 
 **Face recognition fails in certain lighting**
 Windows Hello IR cameras work best in consistent indoor lighting. Extreme backlighting (sitting in front of a bright window) can cause issues. Adjust your position or switch to fingerprint/PIN.
+
+*Source: [Microsoft Entra passkey (FIDO2) documentation](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-enable-passkey-fido2)*

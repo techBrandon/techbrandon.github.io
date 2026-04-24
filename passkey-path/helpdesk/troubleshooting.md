@@ -58,10 +58,10 @@ Most passkey support requests fall into a handful of categories. This page cover
 
 **Check:**
 1. Is the user entering their username correctly?
-2. At the authentication prompt, are they looking for "Sign in with a passkey" or "Windows Hello or security key"?
-3. Is the passkey registered on the device they're currently using? (A passkey on their phone won't automatically appear on a different computer unless they use the QR code flow)
+2. At the authentication prompt, are they looking at the passkey option (the exact label varies - it may read as "Use a passkey", "Sign in with a passkey", "Face, fingerprint, PIN, or security key", or "Windows Hello or security key" depending on the device, browser, and whether Entra has rolled out a UX update)? If unsure, guide the user to "Other ways to sign in" / "Sign in another way" to see the full method list.
+3. Is the passkey registered on the device they're currently using? A passkey on their phone won't automatically appear on a different computer unless they use the cross-device (QR code) flow.
 
-**Fix:** Guide the user to the correct option. If they're on a different device, have them choose "Sign in with a passkey on another device" to use the QR code cross-device flow.
+**Fix:** Guide the user to the passkey option. If they're on a different device, have them pick the cross-device or "passkey on another device" option to trigger the QR code flow. The Entra sign-in UX changes regularly - if a label you see here doesn't match the screen in front of you, verify against Microsoft's current [passkey (FIDO2) compatibility](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-fido2-compatibility) doc.
 
 ### "Something went wrong" after biometric verification
 

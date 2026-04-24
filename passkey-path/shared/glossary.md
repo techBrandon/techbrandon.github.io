@@ -16,6 +16,9 @@ An Entra Conditional Access feature that lets you define which authentication me
 **Conditional Access (CA)**
 Entra's policy engine for controlling how and when users authenticate. CA policies can require specific authentication strengths, restrict access by location or device compliance, and enforce phishing-resistant MFA.
 
+**Device-bound passkey**
+A passkey whose private key is stored in hardware and cannot be exported or synced. FIDO2 security keys and Windows Hello TPM-backed credentials are device-bound. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
+
 **Downgrade attack**
 An attack where an adversary bypasses a strong authentication method (like a passkey) by targeting a weaker method still enrolled on the same account (like a password + SMS). The fix is removing legacy credentials after passkey rollout. See [Downgrade Attacks](/passkey-path/security/downgrade-attacks/).
 
@@ -39,9 +42,6 @@ The secret half of a passkey's key pair. It stays on your device (or in a platfo
 
 **Public key**
 The non-secret half of a passkey's key pair. It's stored by the service during registration and used to verify that authentication challenges were signed by the matching private key.
-
-**Device-bound passkey**
-A passkey whose private key is stored in hardware and cannot be exported or synced. FIDO2 security keys and Windows Hello TPM-backed credentials are device-bound. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
 
 **Syncable passkey**
 A passkey whose private key is backed up and synced via a platform credential manager (iCloud Keychain, Google Password Manager, Microsoft Authenticator). Survives device loss but the key can leave the originating hardware. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).

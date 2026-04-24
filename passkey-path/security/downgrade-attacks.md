@@ -42,6 +42,11 @@ Here's how this plays out:
 1. Attacker obtains the target's password (breach database, phishing page, infostealer)
 2. Attacker initiates sign-in at the legitimate Microsoft login page
 3. Microsoft prompts for MFA - the attacker gets a prompt for whatever MFA methods are available
+
+![Illustration of a downgrade attack: the legitimate passkey is bypassed because a weaker enrolled method (password, SMS, push) still satisfies sign-in](/assets/images/Downgrade-Attack.png)
+
+[View in Entra portal](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/SignInLogsList.ReactView)
+
 4. If SMS is enrolled: attacker performs a SIM swap or intercepts the code via SS7
 5. If push is enrolled: attacker triggers push notifications repeatedly until the user approves (MFA fatigue)
 6. If the attacker uses an AiTM proxy: they capture the session token in real time, bypassing MFA entirely

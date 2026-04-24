@@ -98,7 +98,44 @@ If you're just getting started, the minimum configuration is:
 2. Check **Allow self-service set up**
 3. Review the default passkey profile settings (no attestation, both passkey types, no AAGUID restriction is a reasonable starting point)
 4. Switch to the **Enable and target** tab, toggle Enable on, and add your pilot group with the default profile
-5. Ensure [Temporary Access Pass](/passkey-path/helpdesk/tap-issuance/) is enabled as an authentication method - you'll need it for recovery
+5. Ensure [Temporary Access Pass](#enabling-temporary-access-pass) is enabled as an authentication method - you'll need it for recovery
 6. Test the registration flow yourself before inviting pilot users
+
+## Enabling Temporary Access Pass
+
+A Temporary Access Pass (TAP) is the time-limited passcode your helpdesk will issue when a user loses their device, forgets their passkey, or is going through first-time onboarding. TAP has to be enabled as an authentication method before anyone can issue one.
+
+You need the **Authentication Policy Administrator** role to edit this policy. (Issuing a TAP to a user is a separate action done by helpdesk with **Authentication Administrator** - see [Issuing Temporary Access Passes](/passkey-path/helpdesk/tap-issuance/) for that side.)
+
+### Enable steps
+
+1. Go to **Entra portal > Protection > Authentication methods > Policies**
+2. Select **Temporary Access Pass**
+3. Click **Enable** and add the groups who should be able to sign in with a TAP (typically all users, possibly excluding break-glass accounts)
+4. Save
+
+### Configure policy defaults
+
+Under the **Configure** tab, set organization-wide defaults. These become the guardrails your helpdesk operates within.
+
+| Setting | Recommended starting value | Notes |
+|---------|---------------------------|-------|
+| Minimum lifetime | 1 hour | Matches the one-time device-loss recovery window |
+| Maximum lifetime | 8 hours | Allows onboarding scenarios without letting TAPs linger too long |
+| Default lifetime | 1 hour | Short by default; helpdesk can lengthen per issuance up to the maximum |
+| One-time use | True | Forces single-use TAPs so an intercepted code can't be replayed |
+| Length | 8 | Microsoft's default; 8-48 are supported |
+
+You can tighten these later once you see how helpdesk actually uses TAPs. Start restrictive.
+
+### Scope to the helpdesk role
+
+TAP issuance is sensitive - anyone who can issue a TAP can effectively become another user. Limit who holds **Authentication Administrator**:
+
+- Assign the role to a dedicated helpdesk group, not individuals
+- For least privilege, create a custom role that grants only `microsoft.directory/users/authenticationMethods/create` and assign that instead
+- Review the assignment list quarterly
+
+See Microsoft's [Configure a Temporary Access Pass](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-temporary-access-pass) doc for the full policy reference and known issues.
 
 Stricter profiles (attestation, AAGUID restrictions) can be added later and assigned to privileged groups. See [Attestation and AAGUIDs](/passkey-path/it-admin/attestation-aaguids/) for that setup.
