@@ -33,10 +33,10 @@ Passkey deployment often intersects with compliance requirements. This page maps
 - Requires two distinct factors
 - Password + SMS OTP satisfies this level (just barely)
 - **Passkeys satisfy AAL2** - the device is "something you have" and the biometric or PIN is "something you are" or "something you know." Two factors in a single action.
-- Both syncable and device-bound passkeys meet AAL2
+- Both syncable and device-bound passkeys can meet AAL2; syncable passkeys are subject to the conditions in Appendix B of NIST SP 800-63B-4 (sync fabric encryption, MFA-protected sync account, etc.).
 
-### AAL3 (Hardware-based multi-factor)
-- Requires a hardware-bound authenticator with verifiable attestation
+### AAL3 (Non-exportable hardware authenticator)
+- Requires a hardware cryptographic authenticator whose keys cannot be exported, plus verifier impersonation resistance
 - **Device-bound passkeys** (FIDO2 security keys with attestation) satisfy AAL3
 - **Syncable passkeys do not** - the key can leave the originating hardware
 - This is the level that matters for privileged access in high-assurance environments
