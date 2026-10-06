@@ -142,7 +142,7 @@ This log supports security reviews and helps identify patterns (frequent losses 
 
 They have no device to register a passkey on. Options:
 - Issue a TAP and have them sign in from a colleague's or shared computer to register a security key (if you have spare keys available)
-- If using syncable passkeys: once they set up a replacement phone with the same Apple ID or Google account, the passkey may restore automatically
+- If using synced passkeys (iCloud Keychain or Google Password Manager - not Authenticator): once they set up a replacement phone with the same Apple ID or Google account, the passkey may restore automatically
 - Temporary solution: TAP for immediate access, schedule a follow-up to register a passkey when they have a replacement device
 
 ### User's security key PIN is locked

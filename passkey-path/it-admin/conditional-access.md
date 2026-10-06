@@ -28,7 +28,7 @@ Entra's [Authentication Strengths](https://learn.microsoft.com/en-us/entra/ident
 
 - **MFA strength** - any MFA method (password + SMS, Authenticator push, etc.)
 - **Passwordless MFA strength** - passwordless methods (Authenticator passwordless, FIDO2, Windows Hello)
-- **Phishing-resistant MFA strength** - only phishing-resistant methods (FIDO2 security keys, passkeys, certificate-based auth)
+- **Phishing-resistant MFA strength** - only phishing-resistant methods (FIDO2 security keys, passkeys, Windows Hello for Business (platform credential), certificate-based auth)
 
 For a passkey deployment, the one you care about is **Phishing-resistant MFA strength**. When you assign this to a Conditional Access policy, users must authenticate with a method from that category - a password plus SMS will not satisfy it, even if the user has those enrolled.
 

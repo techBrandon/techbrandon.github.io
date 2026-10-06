@@ -52,13 +52,15 @@ Set up at least one biometric method plus a PIN as fallback.
 
 If your IT team has enabled Windows Hello for Business, the credential is typically provisioned automatically when you sign in to your Entra-joined device. In that case there's nothing to do - Windows Hello will already be offered as a sign-in option at work websites.
 
-If it wasn't provisioned automatically, you can register a passkey backed by Windows Hello through Security info:
+If it wasn't provisioned automatically, you can register a Microsoft Entra passkey on Windows through Security info. This saves a passkey in Windows Hello on this PC:
 
 1. Go to **[https://mysignins.microsoft.com/security-info](https://mysignins.microsoft.com/security-info)**
 2. Click **"+ Add sign-in method"**
-3. Select **"Passkey"** (or "Security key" in some tenants - Windows Hello registers through the same flow)
-4. Follow the prompts - your browser will ask you to verify with your Windows Hello fingerprint, face, or PIN
+3. Select **"Passkey"**, then choose to save it on this Windows device
+4. Follow the prompts - Windows will ask you to verify with your Windows Hello fingerprint, face, or PIN
 5. Name the passkey (e.g., "Work Laptop")
+
+If you already have a Windows Hello for Business credential for this account on this PC, you won't be able to add one.
 
 If "Passkey" isn't available in the dropdown, your IT team may not have enabled self-service passkey registration yet. Contact your helpdesk.
 

@@ -22,7 +22,7 @@ This guide walks you through registering a passkey in the Microsoft Authenticato
 
 Make sure you have:
 
-- **Microsoft Authenticator** installed and updated to the latest version (6.2+)
+- **Microsoft Authenticator** installed and updated to the latest version
   - [Download for iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)
   - [Download for Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)
 - Your phone's operating system is up to date (iOS 17+ or Android 14+)
@@ -70,7 +70,7 @@ After setup completes, try signing out and back in. At the sign-in page:
 
 - **Name your passkeys clearly** - if you set up multiple passkeys (phone + computer), give each a name you'll recognize
 - **Keep Authenticator updated** - passkey features may improve with app updates
-- **Don't delete the app** - if you remove Authenticator from your phone, your passkey goes with it (syncable passkeys may restore if you reinstall, but don't count on it)
+- **Don't delete the app** - your passkey lives only in Authenticator on this phone. Deleting the app or moving to a new phone removes it, and restoring a backup won't bring it back. Register a new passkey on the new phone.
 - **Set up a second passkey** if possible - registering a passkey on both your phone and computer (via Windows Hello) means losing one device doesn't lock you out
 
 ## Troubleshooting

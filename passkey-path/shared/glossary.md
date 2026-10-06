@@ -11,13 +11,13 @@ A unique identifier assigned to each authenticator model. In Entra, you can conf
 A mechanism where an authenticator cryptographically proves its identity (make, model, firmware version) during registration. Entra uses attestation to enforce AAGUID allowlists, ensuring only approved hardware can enroll. See [Attestation and AAGUIDs](/passkey-path/it-admin/attestation-aaguids/).
 
 **Authentication strength**
-An Entra Conditional Access feature that lets you define which authentication methods satisfy a policy. The built-in "Phishing-resistant MFA" strength requires passkeys, FIDO2 keys, or certificate-based auth - blocking weaker methods like SMS or push. See [Conditional Access for Passkeys](/passkey-path/it-admin/conditional-access/).
+An Entra Conditional Access feature that lets you define which authentication methods satisfy a policy. The built-in "Phishing-resistant MFA" strength requires passkeys, FIDO2 keys, Windows Hello for Business (platform credential), or certificate-based auth - blocking weaker methods like SMS or push. See [Conditional Access for Passkeys](/passkey-path/it-admin/conditional-access/).
 
 **Conditional Access (CA)**
 Entra's policy engine for controlling how and when users authenticate. CA policies can require specific authentication strengths, restrict access by location or device compliance, and enforce phishing-resistant MFA.
 
 **Device-bound passkey**
-A passkey whose private key is stored in hardware and cannot be exported or synced. FIDO2 security keys and Windows Hello TPM-backed credentials are device-bound. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
+A passkey whose private key is stored in hardware and cannot be exported or synced. FIDO2 security keys, Windows Hello TPM-backed credentials, and passkeys in the Microsoft Authenticator app are device-bound. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
 
 **Downgrade attack**
 An attack where an adversary bypasses a strong authentication method (like a passkey) by targeting a weaker method still enrolled on the same account (like a password + SMS). The fix is removing legacy credentials after passkey rollout. See [Downgrade Attacks](/passkey-path/security/downgrade-attacks/).
@@ -44,7 +44,7 @@ The secret half of a passkey's key pair. It stays on your device (or in a platfo
 The non-secret half of a passkey's key pair. It's stored by the service during registration and used to verify that authentication challenges were signed by the matching private key.
 
 **Syncable passkey**
-A passkey whose private key is backed up and synced via a platform credential manager (iCloud Keychain, Google Password Manager, Microsoft Authenticator). Survives device loss but the key can leave the originating hardware. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
+A passkey whose private key is backed up and synced via a platform credential manager (iCloud Keychain, Google Password Manager). Survives device loss but the key can leave the originating hardware. See [Device-Bound vs Syncable Passkeys](/passkey-path/shared/device-bound-vs-sync/).
 
 **TAP** (Temporary Access Pass)
 An Entra feature that issues a time-limited passcode for account recovery or initial setup. When a user loses their passkey, helpdesk issues a TAP so they can sign in and register a new credential. See [Issuing Temporary Access Passes](/passkey-path/helpdesk/tap-issuance/).

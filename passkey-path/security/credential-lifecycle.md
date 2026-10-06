@@ -32,7 +32,7 @@ Passwords are the primary downgrade target. While a usable password exists on an
 
 **How to disable in Entra:**
 - **Conditional Access first.** Create a CA policy that requires phishing-resistant MFA (or a custom authentication strength that excludes password-based combinations). Passwords aren't literally removable from an Entra account, so CA is the enforcement mechanism that makes them unusable for covered resources.
-- **Randomize the password** via admin action or Microsoft Graph once CA enforcement is in place. The account still has a password, but nobody - including the user - knows what it is. This is as close as Entra gets to "no password." Use the [Reset-MgUserPassword](https://learn.microsoft.com/en-us/graph/api/user-update) Graph API or reset from the Entra admin center with a generated value, and do not communicate the value to the user.
+- **Randomize the password** via admin action or Microsoft Graph once CA enforcement is in place. The account still has a password, but nobody - including the user - knows what it is. This is as close as Entra gets to "no password." Use the Microsoft Graph [update user](https://learn.microsoft.com/en-us/graph/api/user-update) API (`PATCH /users/{id}` with a new `passwordProfile`, or `Update-MgUser` in Graph PowerShell) or reset from the Entra admin center with a generated value, and do not communicate the value to the user. This works for cloud-only accounts; passwords for federated users are managed on-premises.
 - **Monitor sign-in logs** for password usage before randomizing - make sure the user isn't relying on it for any workflow.
 
 **Blocker:** Legacy applications that require passwords. See [Legacy Apps and Coexistence](/passkey-path/it-admin/legacy-coexistence/).
@@ -40,6 +40,8 @@ Passwords are the primary downgrade target. While a usable password exists on an
 ### 2. SMS and voice MFA
 
 SMS-based MFA is vulnerable to SIM swapping, SS7 interception, and social engineering of carrier staff. Voice calls have similar risks.
+
+> **Microsoft is retiring its own SMS and voice delivery.** Microsoft is making passkeys the default in Entra ID. Users enabled for SMS or voice are being enabled for passkeys and prompted to register one when they complete MFA. Eventually, users whose only MFA method is SMS or voice must register a passkey before they can keep signing in. Organizations with a real need can continue with SMS or voice through a third-party telephony provider. This means SMS retirement is no longer fully on your own schedule - plan ahead. See [Microsoft's passkeys by default guidance](https://aka.ms/passkeybydefault) for current dates and requirements.
 
 **How to remove in Entra:**
 - Go to **Protection > Authentication methods > SMS** and exclude users who have passkeys
@@ -90,8 +92,8 @@ Here's a practical timeline tied to passkey enrollment phases:
 | Enrollment | Day 0-30 | Users register passkeys. No credentials removed yet. |
 | Enforcement | Day 30-60 | CA policy requires phishing-resistant MFA. Passwords still exist but can't satisfy policy for covered apps. |
 | Monitoring | Day 60-90 | Review sign-in logs. Identify users still using passwords for any workflow. Investigate and remediate. |
-| SMS/voice removal | Day 60-90 | Remove SMS and voice MFA for passkey-enrolled users. |
-| Push migration | Day 90-120 | Switch Authenticator to passwordless-only mode for enrolled users. |
+| SMS/voice removal | Day 60-90 | Remove SMS and voice MFA for passkey-enrolled users. Microsoft is retiring its own SMS and voice delivery on a published timeline - finish before [the current dates](https://aka.ms/passkeybydefault). |
+| Push migration | Day 90-120 | Enforce phishing-resistant CA for enrolled groups and narrow Microsoft Authenticator push/passwordless targeting to users not yet enrolled. |
 | Password disable | Day 90-180 | Disable passwords for users with no legacy app dependencies. |
 | App password revocation | Ongoing | Revoke as legacy apps are migrated. |
 | Full cleanup | Day 180+ | All standard users passwordless. Privileged accounts on hardware keys only. |

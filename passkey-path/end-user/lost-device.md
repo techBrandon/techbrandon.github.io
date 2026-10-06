@@ -58,7 +58,7 @@ This step exists to protect you. If someone stole your phone and called the help
 
 ## Step 5: Get a Temporary Access Pass
 
-Once your identity is verified, your helpdesk will issue a **Temporary Access Pass (TAP)** - a one-time code with a limited time window (typically a few hours). You'll use this to:
+Once your identity is verified, your helpdesk will issue a **Temporary Access Pass (TAP)** - a one-time code with a short time window (often one hour - use it right away). You'll use this to:
 
 1. Sign in to your account from a browser
 2. Go to [My Security Info](https://mysignins.microsoft.com/security-info)

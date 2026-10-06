@@ -20,23 +20,25 @@ crosslinks:
     description: "What hardware and OS versions support each method"
 ---
 
-As of March 2026, passkey authentication is generally available in Microsoft Entra ID. Entra supports passkeys through three methods, each configured differently.
+Microsoft Entra ID supports both device-bound and synced passkeys as generally available authentication methods. Entra supports passkeys through three methods, each configured differently.
 
 ## The three methods
 
 ### Microsoft Authenticator app
 
-Passkeys stored in the Authenticator app on iOS or Android. The passkey syncs via the platform's credential manager (iCloud Keychain on iOS, Google Password Manager on Android), which means users can recover their passkey when they get a new phone - as long as they stay within the same platform ecosystem.
+Passkeys stored in the Authenticator app on iOS or Android. The passkey is created in the phone's secure hardware (the Secure Enclave on iOS, secure hardware on Android) and stays in the Authenticator app on that phone. It is device-bound and does not sync. A new phone means registering a new passkey, usually with a [Temporary Access Pass](/passkey-path/helpdesk/tap-issuance/) or another passkey the user already has. Restoring Authenticator from a backup does not bring passkeys back.
 
-Entra also supports passkeys synced through other platform credential managers (iCloud Keychain directly, Google Password Manager) outside of Authenticator. These register through the Passkey (FIDO2) method in Entra and follow the same [syncable vs device-bound](/passkey-path/shared/device-bound-vs-sync/) trade-offs.
+Entra also supports passkeys synced through your phone's built-in credential manager (iCloud Keychain on iPhone, Google Password Manager on Android). These look similar to Authenticator passkeys because Authenticator registers with the phone as a passkey provider, so the same prompts appear for both. They register through the Passkey (FIDO2) method in Entra and follow the [syncable vs device-bound](/passkey-path/shared/device-bound-vs-sync/) trade-offs.
 
-**Best for:** Most users in most organizations. Low friction, familiar app, built-in backup.
+**Best for:** Most users in most organizations. Low friction, familiar app, no extra hardware.
 
 ### Passkeys (FIDO2)
 
 This covers both hardware security keys (YubiKey, Feitian, Google Titan) and platform passkeys from third-party credential managers. Hardware keys store the private key on a physical chip that never leaves the device. Users plug in the key (USB) or tap it (NFC) and verify with a PIN or biometric on the key itself.
 
 In Entra, FIDO2 passkeys are configured through passkey profiles under **Protection > Authentication methods > Passkey (FIDO2)**. A profile controls attestation, passkey type (device-bound or syncable), and AAGUID restrictions. You can create up to 3 profiles and assign each to different user groups.
+
+**Microsoft Entra passkey on Windows** is also configured here, and it is separate from Windows Hello for Business. It stores a FIDO2 passkey in the PC's local Windows Hello container, so the device doesn't need to be Entra joined or registered. It's device-bound and doesn't sync. To allow it, create a passkey profile that targets the Windows Hello AAGUIDs. That profile can't enforce attestation. It doesn't replace Windows Hello for Business and doesn't provide device sign-in. See [Microsoft's guidance on Entra passkeys on Windows](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-entra-passkeys-on-windows).
 
 **Best for:** Privileged accounts, shared workstations, high-security environments, users who work across multiple devices and platforms.
 

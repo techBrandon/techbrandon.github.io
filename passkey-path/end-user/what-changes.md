@@ -58,8 +58,11 @@ That's the whole change. One step instead of three.
 **Do I still need my password?**
 During the transition, your password may still work as a backup. Eventually, your password may phase out entirely. You'll be informed before this happens.
 
+**Why am I being asked to set up a passkey?**
+Microsoft is making passkeys the default way to sign in to work accounts, and moving away from text-message and phone-call codes. The prompt is expected. See [Setting Up a Passkey with Authenticator](/passkey-path/end-user/setup-authenticator/) to get started, or contact your helpdesk if you're stuck.
+
 **What if my fingerprint reader doesn't work?**
-You can use a PIN as a fallback. The PIN is set up during passkey registration.
+You can use a PIN instead - your device's unlock PIN, or your security key's PIN if you use one.
 
 **Can I have multiple passkeys?**
 Yes. You can register a passkey on your phone and on your computer, or on multiple security keys. Having more than one is actually recommended - if you lose one, you still have the other.

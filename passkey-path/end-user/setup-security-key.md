@@ -50,7 +50,7 @@ In the dropdown, select **"Passkey"**
 3. **Touch the key** - the key will blink or flash. Touch the metal contact or button to confirm you're physically present.
 4. **Name your key** - give it a recognizable name like "Blue YubiKey" or "Work Security Key"
 
-### 5. Test it
+### 4. Test it
 
 Sign out and back in:
 

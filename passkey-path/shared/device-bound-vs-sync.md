@@ -28,9 +28,17 @@ Syncable passkeys live in a platform's credential manager:
 
 - **iCloud Keychain** (Apple devices)
 - **Google Password Manager** (Android and Chrome)
-- **Microsoft Authenticator** (iOS and Android)
 
 When a user creates a syncable passkey, the private key gets encrypted and backed up to their platform account. If they get a new phone, the passkey restores automatically - no re-enrollment, no helpdesk ticket.
+
+### Phone passkeys: Authenticator vs. your phone's built-in manager
+
+Two kinds of passkey can live on the same phone, and they behave differently:
+
+- A passkey saved in the **Microsoft Authenticator app** (iPhone or Android) is device-bound. It stays on that phone and does not sync.
+- A passkey saved to the phone's **built-in credential manager** (iCloud Keychain on iPhone, Google Password Manager on Android) is synced across the user's devices on that platform account.
+
+They get confused because Authenticator registers with iOS and Android as a passkey provider, so the same system prompts appear for both. The app the passkey was saved to decides whether it syncs.
 
 ### The trade-off
 
@@ -40,7 +48,7 @@ But in **high-assurance environments** - government, financial services, or anyw
 
 ### When to use them
 
-Syncable passkeys are the right default for most users because:
+Syncable passkeys are a good fit where portability matters because:
 
 - **Lower helpdesk burden** - device replacement doesn't mean credential re-enrollment
 - **Better user experience** - passkeys "just appear" on new devices
@@ -53,7 +61,9 @@ Device-bound passkeys stay on the physical hardware they were created on. The pr
 The most common examples:
 
 - **FIDO2 security keys** - YubiKey, Feitian, Google Titan. The private key lives on the key's chip.
+- **Microsoft Authenticator** - passkey stays in the app on that phone (iOS and Android)
 - **Windows Hello for Business** - private key stored in the device's TPM
+- **Microsoft Entra passkey on Windows** - passkey stored in the PC's local Windows Hello container
 - **Platform authenticators** with export disabled
 
 ### The trade-off
@@ -78,13 +88,13 @@ Device-bound passkeys belong in your privileged access tier:
 | Helpdesk recovery burden | Low | Higher |
 | Portability | Cross-device within platform | Single device only |
 | Compliance fit | Standard users, most environments | High-assurance, privileged access |
-| Examples | Authenticator app, iCloud Keychain, Google Password Manager | YubiKey, Windows Hello TPM |
+| Examples | iCloud Keychain, Google Password Manager | YubiKey, Windows Hello TPM, Authenticator app |
 
 ## The practical recommendation
 
 For most organizations, the right approach is both:
 
-- **Syncable passkeys via Authenticator** as the default for standard users
+- **Authenticator passkeys** (device-bound, no extra hardware) as the default for standard users, with synced platform passkeys as an option where portability matters
 - **Device-bound passkeys via FIDO2 security keys** for privileged accounts and high-security scenarios
 
-Sync handles the majority. Hardware keys cover the accounts that can't afford the portability risk. You can enforce this split using Entra's [Conditional Access authentication strengths](/passkey-path/it-admin/conditional-access/) and [AAGUID allowlists](/passkey-path/it-admin/attestation-aaguids/).
+Authenticator handles the majority. Hardware keys cover the accounts that can't afford the portability risk. You can enforce this split using Entra's [Conditional Access authentication strengths](/passkey-path/it-admin/conditional-access/) and [AAGUID allowlists](/passkey-path/it-admin/attestation-aaguids/).

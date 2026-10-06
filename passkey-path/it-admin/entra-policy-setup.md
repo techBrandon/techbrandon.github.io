@@ -79,7 +79,7 @@ To configure Authenticator for push and OTP:
 2. Enable it and target your groups
 3. Under Configure, set the **Authentication mode** (Push, Passwordless, or Any) and notification behavior
 
-The Authenticator app must be version 6.8.0+ on Android and iOS for passkey support.
+Passkeys in Authenticator require iOS 17+ or Android 14+, and the latest version of the app. If one passkey profile targets Authenticator for both device-bound and synced passkey types, users need Authenticator iOS 6.8.37+ or Android 6.2507.4749+. See [Microsoft's passkey (FIDO2) configuration guidance](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkeys-fido2).
 
 ## Configuring Windows Hello for Business
 
@@ -100,6 +100,7 @@ If you're just getting started, the minimum configuration is:
 4. Switch to the **Enable and target** tab, toggle Enable on, and add your pilot group with the default profile
 5. Ensure [Temporary Access Pass](#enabling-temporary-access-pass) is enabled as an authentication method - you'll need it for recovery
 6. Test the registration flow yourself before inviting pilot users
+7. When the pilot works, use a registration campaign to prompt users at sign-in - see [Phased Rollout Strategy](/passkey-path/it-admin/rollout-planning/)
 
 ## Enabling Temporary Access Pass
 

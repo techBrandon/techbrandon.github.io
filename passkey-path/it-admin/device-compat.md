@@ -28,9 +28,11 @@ Passkey support depends on the combination of operating system, browser, and aut
 
 | Platform | Minimum Version | Notes |
 |----------|----------------|-------|
-| iOS | 16.0+ | Passkey syncs via iCloud Keychain |
-| Android | 9.0+ | Passkey syncs via Google Password Manager |
-| Authenticator app | 6.8.0+ | Required on both platforms |
+| iOS | 17+ | Stored in the Authenticator app on this phone (device-bound, doesn't sync) |
+| Android | 14+ | Stored in the Authenticator app on this phone (device-bound, doesn't sync); needs a Secure Element or TEE |
+| Authenticator app | Latest | Keep the app updated on both platforms |
+
+If one passkey profile targets Authenticator for both device-bound and synced passkey types, users need Authenticator iOS 6.8.37+ or Android 6.2507.4749+. See [Microsoft's passkey (FIDO2) configuration guidance](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkeys-fido2).
 
 ### FIDO2 security keys
 
@@ -65,7 +67,9 @@ All major browsers support WebAuthn, but with differences:
 | Safari 14+ | Yes | Yes | Yes (Apple ecosystem) |
 | Firefox 60+ | Partial | Yes | Limited |
 
-**Cross-device authentication** is the flow where you scan a QR code on your phone to authenticate on a desktop browser. This works well in Chrome and Edge but has inconsistencies in Firefox.
+**Cross-device authentication** is the flow where you scan a QR code on your phone to authenticate on a desktop browser. This works well in Chrome and Edge but has inconsistencies in Firefox. Firefox on Android isn't supported for Entra passkey sign-in.
+
+*Source: [Microsoft passkey (FIDO2) compatibility matrix](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-fido2-compatibility) - last verified October 2026.*
 
 ## Known gaps and gotchas
 

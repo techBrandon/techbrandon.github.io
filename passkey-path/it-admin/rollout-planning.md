@@ -30,6 +30,7 @@ Before you start enrolling anyone, confirm these are in place:
 - **Temporary Access Pass enabled** with appropriate duration and usage settings (see [TAP Issuance](/passkey-path/helpdesk/tap-issuance/))
 - **Helpdesk identity verification process** defined and documented (see [Identity Verification](/passkey-path/helpdesk/identity-verify/))
 - **Device compatibility audit** completed - you know which users have supported hardware and OS versions
+- **Microsoft's passkeys-by-default changes reviewed** - Microsoft may already be enabling passkeys and prompting SMS and voice users to register one, so identify who still relies on SMS or voice (see [Microsoft's passkeys by default guidance](https://aka.ms/passkeybydefault) for current details)
 - **Conditional Access** in report-only mode for phishing-resistant MFA (don't enforce yet)
 - **User communication template** drafted - what passkeys are, why you're rolling them out, and what users need to do
 
@@ -74,10 +75,13 @@ Before you start enrolling anyone, confirm these are in place:
 **Steps:**
 1. Enable authentication methods for department groups
 2. Send department-wide communication
-3. Move Conditional Access policy from report-only to enforced for the department - require phishing-resistant MFA
-4. Monitor for users blocked by the CA policy and assist with enrollment
-5. Track enrollment rate and set a target (e.g., 90% within 2 weeks)
-6. Identify holdouts and determine if they have legitimate blockers (unsupported devices, accessibility needs)
+3. Configure a passkey [registration campaign](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-registration-campaign) so users are prompted at their next MFA sign-in: go to **Entra ID > Authentication methods > Registration campaign**, set the state to **Enabled**, target **Passkey**, and include the department group. Passkey (FIDO2) must be enabled with **Allow self-service set up**, and the users must be in scope for it.
+4. Move Conditional Access policy from report-only to enforced for the department - require phishing-resistant MFA
+5. Monitor for users blocked by the CA policy and assist with enrollment
+6. Track enrollment rate and set a target (e.g., 90% within 2 weeks)
+7. Identify holdouts and determine if they have legitimate blockers (unsupported devices, accessibility needs)
+
+Microsoft may already have the registration campaign in **Microsoft managed** state for SMS and voice users as part of [passkeys by default](https://aka.ms/passkeybydefault). Check its current state before you change it.
 
 **Exit criteria:** 90%+ department enrollment, CA policy enforced without significant disruption, helpdesk volume is manageable.
 
@@ -88,7 +92,7 @@ Before you start enrolling anyone, confirm these are in place:
 **Goal:** Complete the rollout and begin planning legacy credential retirement.
 
 **Steps:**
-1. Enable authentication methods for all users
+1. Enable authentication methods for all users and extend the registration campaign to them
 2. Send org-wide communication (by now you'll have a polished template)
 3. Expand Conditional Access enforcement to all users
 4. Begin tracking which users still have passwords and legacy MFA methods enrolled

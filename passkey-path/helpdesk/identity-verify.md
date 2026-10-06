@@ -32,7 +32,7 @@ With passwords, the risk of a bad reset is limited: the attacker gets temporary 
 
 Not every account needs the same verification rigor. Define standards based on role sensitivity:
 
-### Group 1: Standard users
+### Tier 1: Standard users
 
 **Minimum verification - two of the following:**
 - Confirm employee ID number
@@ -40,16 +40,16 @@ Not every account needs the same verification rigor. Define standards based on r
 - Confirm recent activity that only the user would know (last project worked on, recent meeting attended)
 - Callback to the user's registered phone number on file in HR systems (not the number they called from)
 
-### Group 2: Sensitive roles (finance, HR, legal)
+### Tier 2: Sensitive roles (finance, HR, legal)
 
-**Group 1 requirements plus one of:**
+**Tier 1 requirements plus one of:**
 - Manager verbal approval (contact the manager directly, don't rely on the caller to transfer you)
 - Video call with camera on - match to employee photo in HR system
 - In-person verification at an office with photo ID
 
-### Group 3: Privileged accounts (admins, executives)
+### Tier 3: Privileged accounts (admins, executives)
 
-**Group 2 requirements plus:**
+**Tier 2 requirements plus:**
 - In-person verification required (no remote recovery for admin accounts)
 - Security team notification before TAP issuance
 - If remote: video call with photo ID verification AND manager/director approval

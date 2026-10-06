@@ -44,11 +44,17 @@ Most passkey support requests fall into a handful of categories. This page cover
 **Check (in order):**
 1. Browser - is it Chrome, Edge, or Safari? Firefox has limited passkey support.
 2. Browser version - is it up to date?
-3. OS version - meets minimum requirements? (iOS 16+, Android 9+, Windows 10 1903+)
-4. Authenticator app version - 6.8.0+?
+3. OS version - meets minimum requirements? (Authenticator passkeys: iOS 17+, Android 14+; Windows 10 1903+)
+4. Authenticator app version - updated to the latest version?
 5. Private/incognito mode - some browsers limit WebAuthn in private windows
 
 **Fix:** Update browser/OS/app, switch to a supported browser, or try in a regular (non-private) window.
+
+### User gets an unexpected passkey registration prompt
+
+**Context:** Expected behavior. Microsoft is making passkeys the default in Entra ID, and users enabled for SMS or voice are prompted to register a passkey when they complete MFA. If the user can't skip the prompt, SMS or voice is likely their only MFA method, and they must register a passkey to keep signing in. See [Microsoft's passkeys by default guidance](https://aka.ms/passkeybydefault) for current details.
+
+**Fix:** Walk the user through [Setting Up a Passkey with Authenticator](/passkey-path/end-user/setup-authenticator/) or the [security key](/passkey-path/end-user/setup-security-key/) guide. Escalate to the IT admin for questions about registration campaign settings.
 
 ## "My passkey isn't working at sign-in"
 
@@ -97,23 +103,28 @@ If the issue persists across browsers and restarts, the passkey registration may
 ### Cross-device (QR code) flow doesn't work
 
 **Check:**
-1. Is Bluetooth enabled on both the phone and the computer? Cross-device auth uses BLE.
+1. Is Bluetooth enabled on both the phone and the computer, and do both have an internet connection? Cross-device auth uses BLE.
 2. Are the phone and computer in physical proximity? (BLE range is limited)
-3. Is the phone's Authenticator app open and the passkey available?
+3. Did the user scan the QR code with the phone's camera app? On iPhone, the camera inside Authenticator can't read the sign-in QR code.
 4. Is the browser on the computer offering the QR code option?
 
 **Fix:** Enable Bluetooth on both devices. If Bluetooth isn't available on the computer, the cross-device flow won't work - the user needs to sign in with a passkey registered on that device, or use a security key.
 
-### Passkey doesn't sync to a new phone
+### Synced passkey doesn't appear on a new phone
 
-**Context:** Syncable passkeys (Authenticator) should sync via the platform credential manager when a user sets up a new phone with the same Apple ID or Google account.
+**Context:** Synced passkeys (iCloud Keychain, Google Password Manager) should sync when a user sets up a new phone with the same Apple ID or Google account. This does not apply to passkeys stored in Microsoft Authenticator - see the next section.
 
 **Check:**
 1. Is the new phone signed into the same Apple ID / Google account?
 2. Is iCloud Keychain enabled (iOS) or Google Password Manager sync enabled (Android)?
-3. Has the user installed and signed into Microsoft Authenticator on the new phone?
 
 **Fix:** Ensure platform account and sync settings are correct. If the passkey still doesn't appear, the user may need to re-register - issue a TAP for recovery.
+
+### Authenticator passkey missing on a new phone
+
+**Context:** Expected behavior. Passkeys in Microsoft Authenticator are device-bound, and Authenticator's account backup doesn't include them.
+
+**Fix:** Issue a TAP, then have the user go to Security info, select **Add sign-in method**, and choose **Passkey in Microsoft Authenticator** on the new phone.
 
 ## "The app won't accept my passkey"
 
@@ -137,5 +148,7 @@ If the issue persists across browsers and restarts, the passkey registration may
 | Key not detected | USB connection solid? | Try different port |
 | PIN locked | Number of attempts exceeded | Factory reset + re-enroll |
 | QR flow fails | Bluetooth enabled? | Enable BLE on both devices |
-| Passkey won't sync | Platform account + sync on? | Check settings, re-register if needed |
+| Synced passkey missing | Platform account + sync on? | Check settings, re-register if needed |
+| Authenticator passkey gone on new phone | Expected (device-bound) | TAP + re-register |
+| Unexpected passkey prompt | Only SMS/voice MFA enrolled? | Expected - guide through setup |
 | App won't accept passkey | Modern auth supported? | Escalate to IT admin |
